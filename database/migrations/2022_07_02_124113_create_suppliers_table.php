@@ -19,6 +19,7 @@ class CreateSuppliersTable extends Migration
             $table->string('telepon')->nullable();
             $table->string('alamat')->nullable();
             $table->date('tanggal_masuk')->nullable();
+            $table->integer('stok');
             $table->string('nama_sparepart')->nullable();
             $table->timestamps();
         });

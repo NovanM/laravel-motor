@@ -19,6 +19,7 @@ class CreateSparepartsTable extends Migration
             $table->string('kode')->nullable();
             $table->string('nama')->nullable();
             $table->integer('stok')->nullable();
+            $table->string('images')->nullable();
             $table->integer('harga')->nullable();
             $table->timestamps();
         });

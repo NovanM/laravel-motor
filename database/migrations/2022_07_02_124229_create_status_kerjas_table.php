@@ -15,6 +15,7 @@ class CreateStatusKerjasTable extends Migration
     {
         Schema::create('status_kerjas', function (Blueprint $table) {
             $table->id();
+            $table->integer('layanan_id');
             $table->integer('user_id');
             $table->string('status_kerja');
             $table->timestamps();

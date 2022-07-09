@@ -16,6 +16,7 @@ class Sparepart extends Model
     {
         return $this->hasOne(Supplier::class ,'id','suplier_id');
     }
+    //test
 }
 
 

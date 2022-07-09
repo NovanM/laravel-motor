@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                GO Motor Service
                 </div>
 
                 <div class="links">

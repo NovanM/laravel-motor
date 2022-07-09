@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $pelanggan = count(Pelanggan::all());
         $supplier = count(Supplier::all());
         $mekanik = count(User::all()->where('role', 'mekanik'));
-        $sparepart = count(DB::table('spareparts')->get());
+        $sparepart = 4;
        
         $layanan = count(LayananService::all());
         $laporan = Transaksi::sum('total');

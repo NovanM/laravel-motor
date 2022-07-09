@@ -8,7 +8,9 @@ use App\Sparepart;
 use App\Supplier;
 use App\Transaksi;
 use App\User;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -18,7 +20,8 @@ class DashboardController extends Controller
         $pelanggan = count(Pelanggan::all());
         $supplier = count(Supplier::all());
         $mekanik = count(User::all()->where('role', 'mekanik'));
-        $sparepart = count(Sparepart::all());
+        $sparepart = count(DB::table('spareparts')->get());
+       
         $layanan = count(LayananService::all());
         $laporan = Transaksi::sum('total');
       

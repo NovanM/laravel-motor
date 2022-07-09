@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\LayananService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class MekanikController extends Controller
+class LayananServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class MekanikController extends Controller
     public function index()
     {
         //
-        $pagename = 'Data Mekanik';
-        $allUsers = User::all()->where('role', 'mekanik');
-        return view('admin.mekanik.index', compact('pagename', 'allUsers'));
+        $pagename = 'Data Layanan';
+        $allLayanan = LayananService::all();
+        return view('admin.layanan.index', compact('pagename', 'allLayanan'));
     }
 
     /**
@@ -29,9 +28,10 @@ class MekanikController extends Controller
     public function create()
     {
         //
-        $mekanik = User::all();
-        $pagename = 'Form Input create Mekanik';
-        return view('admin.mekanik.create', compact('pagename', 'mekanik'));
+        $data = LayananService::all();
+        $pagename = 'Form Input Create Layanan';
+
+        return view('admin.layanan.create', compact('pagename', 'data'));
     }
 
     /**
@@ -42,24 +42,23 @@ class MekanikController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $request->validate([
-            'name' => 'required',
-            'password' => 'required',
-            'email' => 'required',
+            'jenis_layanan' => 'required',
+            'harga' => 'required|numeric',
+            'keterangan' => 'required',
         ]);
 
-        $data = new User(
+        $data = new LayananService(
             [
-                'name' => $request->get('name'),
-                'password' => Hash::make($request->get('password')),
-                'email' => $request->get('email'),
-                'telepon' => $request->get('telepon'),
-                'role' => 'mekanik',
+                'jenis_layanan' => $request->get('jenis_layanan'),
+                'keterangan' => $request->get('keterangan'),
+                'harga' => $request->get('harga'),
             ]
         );
 
         $data->save();
-        return redirect('dashboard/mekanik')->with('success', 'Mekanik Created');
+        return redirect('dashboard/layanan')->with('success', 'Layanan Service Created');
     }
 
     /**
@@ -82,9 +81,9 @@ class MekanikController extends Controller
     public function edit($id)
     {
         //
-        $pagename = 'Update Data mekanik';
-        $data = User::find($id);
-        return view('admin.mekanik.edit', compact('data', 'pagename',));
+        $pagename = 'Update Data Layanan Service';
+        $data = LayananService::find($id);
+        return view('admin.layanan.edit', compact('data', 'pagename',));
     }
 
     /**
@@ -97,19 +96,15 @@ class MekanikController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = LayananService::find($id);
 
-        
-        $data = User::find($id);
- 
-        $password_hash = Hash::make($request->password);
+        $data->jenis_layanan = $request->get('jenis_layanan');
+        $data->keterangan = $request->get('keterangan');
+        $data->harga = $request->get('harga');
 
-        $data->name = $request->get('name');
-        $data->password = $password_hash;
-        $data->email = $request->get('email');
-        $data->telepon = $request->get('telepon');
 
         $data->save();
-        return redirect('dashboard/mekanik')->with('success', 'Mekanik Updated');
+        return redirect('dashboard/layanan')->with('success', 'Layanan Service Updated');
     }
 
     /**
@@ -121,9 +116,9 @@ class MekanikController extends Controller
     public function destroy($id)
     {
         //
-        $data = User::find($id);
+        $data = LayananService::find($id);
 
         $data->delete();
-        return redirect('dashboard/mekanik')->with('success', 'Mekanik User Deleted');
+        return redirect('dashboard/layanan')->with('success', 'Layanan Service Deleted');
     }
 }

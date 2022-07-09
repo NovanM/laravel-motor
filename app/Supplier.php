@@ -9,7 +9,7 @@ class Supplier extends Model
 {
     //
     protected $fillable = [
-        'nama','alamat','tanggal_masuk','nama_sparepart','telepon'
+        'nama','alamat','tanggal_masuk','nama_sparepart','telepon','stok','suplier_id'
     ];
 
 

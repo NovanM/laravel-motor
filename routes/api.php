@@ -25,18 +25,18 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::middleware('auth:sanctum')->group(function(){
-    Route::get('user', [UserController::class, 'fetch']);
-    Route::post('user', [UserController::class, 'updateProfile']);
-    // Route::get('user', [UserController::class, 'fetch']);
-    Route::post('logout', [UserController::class, 'logout']);
-    Route::get('transaction',[TransaksiControlller::class, 'all']);
-    Route::post('transaction/{id}',[TransaksiControlller::class, 'update']);
-    Route::get('rating', [Rating::class], 'all');
-    Route::get('status-kerja',[StatusKerja::class, 'all']);    
+    Route::get('user', 'API\UserController@fetch');
+    Route::post('user', 'API\UserController@updateProfile');
+    // Route::get('user', 'UserController@, 'fetch');
+    Route::post('logout', 'API\UserController@logout');
+    Route::get('transaction','API\TransaksiControlller@all');
+    Route::post('transaction/{id}','API\TransaksiControlller@update');
+    Route::get('rating', 'API\RatingController@all');
+    Route::get('status-kerja','API\StatusKerjaController@all');    
 });
 
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 
-Route::get('layanan',[LayananServiceController::class, 'all']);
-Route::get('sparepart',[SparePartControlller::class, 'all']);
+Route::get('layanan','API\LayananServiceController@all');
+Route::get('sparepart','API\SparePartControlller@all');

@@ -46,8 +46,9 @@ class SupplierController extends Controller
             'name' => 'required',
             'telepon' => 'required',
             'nama_sparepart' => 'required',
+            'stok'=> "required",
         ]);
-        dd($request->telepon);
+      
         $data = new Supplier(
             [
                 'nama' => $request->get('name'),
@@ -55,6 +56,7 @@ class SupplierController extends Controller
                 'alamat' => $request->get('alamat'),
                 'tanggal_masuk' => $request->get('tanggal_masuk'),
                 'nama_sparepart' => $request->get('nama_sparepart'),
+                'stok'=> $request->get('stok'),
             ]
         );
 
@@ -97,11 +99,7 @@ class SupplierController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([
-            'name' => 'required',
-            'telepon' => 'required',
-            'nama_sparepart' => 'required',
-        ]);
+    
 
         $data = Supplier::find($id);
 
@@ -129,6 +127,6 @@ class SupplierController extends Controller
         $data = Supplier::find($id);
 
         $data->delete();
-        return redirect('admin/supplier')->with('success', 'Supplier Deleted');
+        return redirect('dashboard/supplier')->with('success', 'Supplier Deleted');
     }
 }

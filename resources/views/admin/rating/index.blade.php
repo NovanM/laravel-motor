@@ -47,7 +47,7 @@
                     </div>
                     @endif
                     <div class="card-header">
-                        <a href="{{route('supplier.create')}}" class="btn btn-success pull-right">Create</a>
+                        <!-- <a href="{{route('layanan.create')}}" class="btn btn-success pull-right">Create</a> -->
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
                    
@@ -56,32 +56,28 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Telepon</th>
-                                   
-                                    <th>Alamat</th>
-                                    <th>Tanggal Masuk</th>
-                                    <th>Nama Sparepart</th>
+                                    <th>Nama Mekanik</th>
+                                    <th>Email</th>
+                                    <th>Komplain</th>
+                                    <th>Rating</th>
                                     <th>Action</th>
-                                   
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($allUsers as $i => $row)
+                                @foreach($allRating as $i => $row)
                                 <tr>
                                     <td>{{++$i}}</td>
-                                    <td>{{$row ->nama}}</td>
-                                    <td>{{$row ->telepon}}</td>
-                                    <td>{{$row ->alamat}}</td>
-                                    <td>{{$row ->tanggal_masuk}}</td>
-                                    <td>{{$row ->nama_sparepart}}</td>
+                                    <td>{{$row->user->name}}</td>
+                                    <td>{{$row->user->email}}</td>
+                                    <td>{{$row->komplain}}</td>
+                                    <td>{{$row->rating}}</td>
                                     <td>
                                         
-                                        <form class="form-inline" action="{{route('supplier.destroy', $row ->id)}}" method="post" >
+                                        <form class="form-inline" action="{{route('rating.destroy', $row ->id)}}" method="post" >
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-outline-danger"  type="submit">Delete</button> 
-                                            <a href="{{route('supplier.edit', $row ->id)}}" class="btn btn-outline-primary ml-3" >Edit</a>
+                                            <a href="{{route('rating.edit', $row ->id)}}" class="btn btn-outline-primary ml-3" >Edit</a>
                                         </form>
                                     
 

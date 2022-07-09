@@ -48,7 +48,7 @@
                     @endif
                     <div class="card-header">
                         @can('task-create')
-                        <a href="{{route('task.create')}}" class="btn btn-outline-dark pull-right">Create</a>
+                        <a href="{{route('task.create')}}" class="btn btn-success pull-right">Create</a>
                         @endcan
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>

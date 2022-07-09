@@ -56,38 +56,21 @@
                         </div>
 
                         @endif
-                        <form action="{{route('supplier.store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="{{route('layanan.store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                             @csrf
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="name" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Jenis Layanan</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="jenis_layanan" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Alamat</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="alamat" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Keterangan</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="keterangan" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Stok</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="stok" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
-                            </div>
-
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tanggal Masuk</label></div>
-                                <div class="col-12 col-md-9"><input type="date" id="text-input" name="tanggal_masuk" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Telepon</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="telepon" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
-                            </div>
-
-                            
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Sparepart</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="nama_sparepart" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Harga</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="harga" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
 
                            

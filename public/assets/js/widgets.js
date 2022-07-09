@@ -222,6 +222,39 @@
             }
         }
     } );
+    var ctx = document.getElementById( "widgetChart5" );
+    ctx.height = 70;
+    var myChart = new Chart( ctx, {
+        type: 'bar',
+        data: {
+            labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    data: [78, 81, 80, 45, 34, 12, 40, 75, 34, 89, 32, 68, 54, 72, 18, 98],
+                    borderColor: "rgba(0, 123, 255, 0.9)",
+                    //borderWidth: "0",
+                    backgroundColor: "rgba(255,255,255,.3)"
+                }
+            ]
+        },
+        options: {
+              maintainAspectRatio: true,
+              legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                  display: false,
+                  categoryPercentage: 1,
+                  barPercentage: 0.5
+                }],
+                yAxes: [ {
+                    display: false
+                } ]
+            }
+        }
+    } );
 
 
 

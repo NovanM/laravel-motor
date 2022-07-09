@@ -27,6 +27,10 @@ Route::prefix('dashboard')
         Route::resource('users', 'UserController');
         Route::resource('mekanik', 'MekanikController');
         Route::resource('supplier', 'SupplierController');
+        Route::resource('sparepart', 'SparepartController');
+        Route::resource('layanan', 'LayananServiceController');
+        Route::resource('rating', 'RatingController');
+        Route::get('transaksi', 'TransaksiController@index');
     });
 
 // Route::get('/home', 'HomeController@index')->name('home');

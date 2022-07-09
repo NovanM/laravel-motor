@@ -47,49 +47,35 @@
                     </div>
                     @endif
                     <div class="card-header">
-                        <a href="{{route('supplier.create')}}" class="btn btn-success pull-right">Create</a>
+                        <!-- <a href="{{route('layanan.create')}}" class="btn btn-success pull-right">Create</a> -->
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
-                   
+
                     <div class="card-body">
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Telepon</th>
-                                   
-                                    <th>Alamat</th>
-                                    <th>Tanggal Masuk</th>
-                                    <th>Nama Sparepart</th>
-                                    <th>Action</th>
-                                   
+                                    <th>Nama Mekanik</th>
+                                    <th>Waktu Transaksi</th>
+                                    <th>Nama Pelanggan</th>
+                                    <th>Total</th>
+                                    <th>URL Pembayaran</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($allUsers as $i => $row)
+                                @foreach($allTransaksi as $i => $row)
                                 <tr>
                                     <td>{{++$i}}</td>
-                                    <td>{{$row ->nama}}</td>
-                                    <td>{{$row ->telepon}}</td>
-                                    <td>{{$row ->alamat}}</td>
-                                    <td>{{$row ->tanggal_masuk}}</td>
-                                    <td>{{$row ->nama_sparepart}}</td>
-                                    <td>
-                                        
-                                        <form class="form-inline" action="{{route('supplier.destroy', $row ->id)}}" method="post" >
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-outline-danger"  type="submit">Delete</button> 
-                                            <a href="{{route('supplier.edit', $row ->id)}}" class="btn btn-outline-primary ml-3" >Edit</a>
-                                        </form>
-                                    
+                                    <td>{{$row->id}}</td>
+                                    <td>{{$row->created_at}}</td>
+                                    <td>{{$row->user->name}}</td>
+                                    <td>{{$row->total}}</td>
+                                    <td>{{$row->payment_url}}</td>
 
-                                    </td>
-                                    
                                 </tr>
-
                                 @endforeach
+
                                 <!-- <tr>
                                     <td>Garrett Winters</td>
                                     <td>Accountant</td>
@@ -98,7 +84,16 @@
                                 </tr> -->
 
                             </tbody>
+
                         </table>
+                        <center>
+                            <tr>
+                                <div class="row form-group">
+                                    <div class="col col-md-12"><label for="text-input" class=" form-control-label">Total Keseluruhan : xxxxxx</label></div>
+
+                                </div>
+                            </tr>
+                        </center>
                     </div>
                 </div>
             </div>

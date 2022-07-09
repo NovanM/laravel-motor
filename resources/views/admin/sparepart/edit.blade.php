@@ -56,38 +56,54 @@
                         </div>
 
                         @endif
-                        <form action="{{route('supplier.store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="{{route('sparepart.update', $data->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            @method('PATCH')
                             @csrf
+             
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="name" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Sparepart</label></div>
+
+                                <div class="col-12 col-md-9">
+                                    <select class="form-control"  name="nama" id="">
+                                        <option value="{{$data->nama}}" label="Pilih Sparepart"></option>
+                                        @foreach($dataSupplier as $sparepart)
+                                        {{$sparepart}}
+                                            <option value="
+                                            {{$sparepart->nama_sparepart}}">
+                                            {{$sparepart->nama_sparepart}}
+                                        </option>
+                                        
+                                        @endforeach
+                                    </select>    
+                                </div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Alamat</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="alamat" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">kode</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->kode}}" name="kode" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
 
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Harga</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->harga}}" name="harga" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                            </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Stok</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="stok" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
-                            </div>
-
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tanggal Masuk</label></div>
-                                <div class="col-12 col-md-9"><input type="date" id="text-input" name="tanggal_masuk" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->stok}}" name="stok" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Telepon</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="telepon" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
-                            </div>
+                                <div class="col col-md-3"><label for="file-input" class=" form-control-label">File Gambar</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="file" id="file" name="images" value="{{$data->images}}" class="form-control-file" value="{{ old('images') }}">
+                                </div>
 
-                            
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Sparepart</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="nama_sparepart" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                @error('file_disposisi')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                               
                             </div>
 
                            

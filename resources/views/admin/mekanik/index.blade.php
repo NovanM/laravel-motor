@@ -47,7 +47,7 @@
                     </div>
                     @endif
                     <div class="card-header">
-                        <a href="{{route('mekanik.create')}}" class="btn btn-outline-dark pull-right">Create</a>
+                        <a href="{{route('mekanik.create')}}" class="btn btn-success pull-right">Create</a>
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
                    

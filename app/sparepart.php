@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sparepart extends Model
 {
     //
+    //
     protected $fillable = [
         'suplier_id', 'kode', 'nama',
         'stok','harga','images'

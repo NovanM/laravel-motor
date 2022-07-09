@@ -13,7 +13,7 @@ class CreateSparepartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Spareparts', function (Blueprint $table) {
+        Schema::create('spareparts', function (Blueprint $table) {
             $table->id();
             $table->integer('suplier_id');
             $table->string('kode')->nullable();

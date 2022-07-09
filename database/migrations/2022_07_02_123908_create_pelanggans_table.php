@@ -16,7 +16,7 @@ class CreatePelanggansTable extends Migration
         Schema::create('pelanggans', function (Blueprint $table) {
             $table->id();
 
-            $table->string('user_id')->nullable();
+            $table->integer('user_id')->nullable();
            
             $table->string('alamat')->nullable();
             $table->string('koordinator_lokasi')->nullable();

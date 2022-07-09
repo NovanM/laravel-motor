@@ -20,7 +20,7 @@ class UserController extends Controller
             ->join('pelanggans as p', 'users.id', '=', 'p.user_id')
             ->where('users.role', 'user')
             ->get();
-        dd($allUsers);
+       
             
         return view('admin.users.index', compact('pagename' , 'allUsers'));
     }

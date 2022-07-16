@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
+use App\Pelanggan;
 use App\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -67,9 +68,12 @@ class UserController extends Controller
                 'username'=>$request->username,
                 'password'=>Hash::make($request->password),
             ]);
-
+           
             $user = User::where('username',$request->username)->first();
             $tokenResult = $user->createToken('authToken')->plainTextToken;
+            Pelanggan::create([
+                'user_id'=>$user->id,
+            ]);
             return ResponseFormatter::success(
                 [
                     'access_token'=>$tokenResult,

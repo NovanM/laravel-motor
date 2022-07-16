@@ -16,14 +16,15 @@ class UserController extends Controller
     {
         //
         $pagename = 'Data Pelanggan';
-        $allUsers =User::select('users.*', 'p.*')
-            ->join('pelanggans as p', 'users.id', '=', 'p.user_id')
+        $allUsers =User::join('pelanggans as p', 'users.id', '=', 'p.user_id')
             ->where('users.role', 'user')
             ->get();
-       
-            
+        
+
         return view('admin.users.index', compact('pagename' , 'allUsers'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,6 +35,7 @@ class UserController extends Controller
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.

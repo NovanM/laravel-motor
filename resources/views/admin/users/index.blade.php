@@ -67,10 +67,12 @@
                             <tbody>
                                 @foreach($allUsers as $i => $row)
                                 <tr>
+                                {{$row->id}}
                                     <td>{{++$i}}</td>
                                     <td>{{$row ->name}}</td>
                                     <td>{{$row ->email}}</td>
-                                    <td>{{$row ->telepon}}</td>
+                                    <td>{{$row ->telepon}} </td>
+                                   
                                     <td>
                                             
                                                 <label class ="badge badge-success"> {{$row->role}}</label>
@@ -79,7 +81,7 @@
                                     <td>{{$row->alamat}}</td>
                                     <!-- <td><a href="{{route('users.edit', $row ->id)}}" class="btn btn-outline-primary ">Edit</a></td> -->
                                     <td>
-                                        <form action="{{route('users.destroy', $row ->id)}}" method="post">
+                                        <form action="{{route('users.destroy', $row->user_id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-outline-danger" type="submit">Delete</button>

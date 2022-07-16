@@ -19,7 +19,7 @@ class UserController extends Controller
         $allUsers =User::join('pelanggans as p', 'users.id', '=', 'p.user_id')
             ->where('users.role', 'user')
             ->get();
-        
+
 
         return view('admin.users.index', compact('pagename' , 'allUsers'));
     }
@@ -92,6 +92,7 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
+       
         $user->delete();
         return redirect()->route('users.index')->with('success', 'User Deleted');
     }

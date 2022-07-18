@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Pelanggan;
 
 class User extends Authenticatable
 {
@@ -46,6 +47,10 @@ class User extends Authenticatable
     }
     public function getUpdateddAt ($value){
         return Carbon::parse($value)->timestamp;
+    }
+    public function pelanggan()
+    {
+        return $this->hasOne(Pelanggan::class ,'user_id','id');
     }
 }
 

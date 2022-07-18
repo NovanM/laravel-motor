@@ -99,8 +99,14 @@ class UserController extends Controller
     public function fetchUser(Request $request)
 
     {
-        $user = User::with(['pelanggan'])->where('user_id', $request->user()->id);
-        return ResponseFormatter::success($user, "Data user Profile");
+        $user = User::with(['pelanggan'])->where('id', $request->user()->id)->first();
+        return ResponseFormatter::success([
+            'email'=>$user->email,
+            'name'=>$user->name,
+            'telepon'=>$user->telepon,
+            'alamat'=>$user->pelanggan->alamat,
+            'koordinator_lokasi'=>$user->pelanggan->koordinator_lokasi,
+        ], "Data user Profile");
     }
 
 

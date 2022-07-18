@@ -55,7 +55,7 @@
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>kode</th>                                   
                                     <th>nama</th>
                                     <th>Stok</th>
@@ -65,15 +65,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach($data as $i => $row)
                                
                                 <tr>
                                     <td>{{++$i}}</td>
-                                    <td>{{$row ->kode}}</td>
-                                    <td>{{$row ->nama}}</td>
-                                    <td>{{$row ->stok}}</td>
+                                    <td>{{$row->kode}}</td>
+                                    <td>{{$row->nama}}</td>
+                                    <td>{{$row->stok}}</td>
                                     <td><img src="{{url('images/'.$row->images)}}" alt="" width="50" height="50"></td>
-                                    <td>Rp {{$row ->harga}}</td>
+                                    <td>Rp {{$row->harga}}</td>
                                     <td>
                                         
                                         <form class="form-inline" action="{{route('sparepart.destroy', $row ->id)}}" method="post" >

@@ -93,8 +93,9 @@ class SparepartController extends Controller
     {
         //
         $pagename = 'Update Data Sparepart';
-        $dataSupplier = Supplier::select('nama_sparepart','stok')->get();
         $data = Sparepart::find($id);
+        $dataSupplier = Supplier::select('nama_sparepart','stok')->where('nama_sparepart', $data->nama)->first();
+    
         return view('admin.sparepart.edit', compact('data', 'pagename','dataSupplier'));
     }
 
@@ -136,8 +137,7 @@ class SparepartController extends Controller
     {
         //
         $data = Sparepart::find($id);
-
         $data->delete();
-        return redirect('dashboard/sprepart')->with('success', 'Sparepart Deleted');
+        return redirect('dashboard/sparepart')->with('success', 'Sparepart Deleted');
     }
 }

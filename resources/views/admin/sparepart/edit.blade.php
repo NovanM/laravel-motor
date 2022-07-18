@@ -60,20 +60,20 @@
                             @method('PATCH')
                             @csrf
              
+                            
                             <div class="row form-group">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Sparepart</label></div>
-
                                 <div class="col-12 col-md-9">
-                                    <select class="form-control"  name="nama" id="">
-                                        <option value="{{$data->nama}}" label="Pilih Sparepart"></option>
-                                        @foreach($dataSupplier as $sparepart)
-                                        {{$sparepart}}
-                                            <option value="
-                                            {{$sparepart->nama_sparepart}}">
-                                            {{$sparepart->nama_sparepart}}
-                                        </option>
+                                    <select class="form-control"  name="nama" value="{{$data->nama}}" id="">
+                                       
                                         
-                                        @endforeach
+                                            <option  @if($dataSupplier->nama_sparepart==$data->name)
+                                                        selected
+                                                    @endif>
+                                            {{$dataSupplier->nama_sparepart}}
+                                            </option>
+                                        
+                                        
                                     </select>    
                                 </div>
                             </div>

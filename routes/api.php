@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::middleware('auth:sanctum')->group(function(){
-    Route::get('user', 'API\UserController@fetch');
+    Route::get('user', 'API\UserController@fetchUser');
     Route::post('user', 'API\UserController@updateProfile');
     // Route::get('user', 'UserController@, 'fetch');
     Route::post('logout', 'API\UserController@logout');

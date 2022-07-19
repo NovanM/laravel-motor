@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'GO Motor Service'),
+    'name' => env('APP_NAME', 'IZ Motor Clinic'),
 
     /*
     |--------------------------------------------------------------------------

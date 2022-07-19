@@ -61,13 +61,13 @@
                                     <th>Telepon</th>
                                     <th>Role</th>
                                     <th>Alamat</th>
-                                    <th>Delete</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($allUsers as $i => $row)
                                 <tr>
-                                {{$row->id}}
+                                
                                     <td>{{++$i}}</td>
                                     <td>{{$row ->name}}</td>
                                     <td>{{$row ->email}}</td>

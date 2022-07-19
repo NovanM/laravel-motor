@@ -65,7 +65,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($allUsers as $i => $row)
+                                @foreach($allUsers as $row)
                                 <tr>
                                     <td>{{++$i}}</td>
                                     <td>{{$row->name}}</td>

@@ -1,7 +1,7 @@
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Go Motor Service</title>
-    <meta name="description" content="Go Motor Service">
+    <title>IZ Motor Clinic</title>
+    <meta name="description" content="IZ Motor Clinic">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">

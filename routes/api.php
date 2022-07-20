@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function(){
     // Route::get('user', 'UserController@, 'fetch');
     Route::post('logout', 'API\UserController@logout');
     Route::get('transaction','API\TransaksiControlller@all');
+    Route::post('transaction','API\TransaksiControlller@checkout');
     Route::post('transaction/{id}','API\TransaksiControlller@update');
     Route::get('rating', 'API\RatingController@all');
     Route::get('status-kerja','API\StatusKerjaController@all');    
@@ -40,3 +41,6 @@ Route::post('register', 'API\UserController@register');
 
 Route::get('layanan','API\LayananServiceController@all');
 Route::get('sparepart','API\SparePartControlller@all');
+
+
+Route::post('midtrans/callback', 'API\TransaksiControlller@callback');

@@ -922,7 +922,6 @@
     margin-right: -0.75rem;
     margin-left: -0.75rem;
   }
-
   .bd-examples > [class^=col-] {
     padding-right: 0.75rem;
     padding-left: 0.75rem;
@@ -975,12 +974,10 @@
     display: table-cell;
     width: 1%;
   }
-
   .bd-brand-item + .bd-brand-item {
     border-top: 0;
     border-left: 1px solid #fff;
   }
-
   .bd-brand-item h1 {
     font-size: 4rem;
   }

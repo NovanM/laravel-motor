@@ -202,7 +202,7 @@
                             <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
                             <div class="stat-content dib">
                                 <div class="stat-text">laporan Profit</div>
-                                <div class="stat-digit">{{$laporan}}</div>
+                                <div class="stat-digit">@currency($laporan)</div>
                             </div>
                         </div>
                     </div>

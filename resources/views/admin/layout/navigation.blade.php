@@ -26,7 +26,7 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Laporan</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-table"></i><a href="{{url('/dashboard/status-kerja')}}">Kerja Mekanik</a></li>
+                        <li><i class="fa fa-table"></i><a href="{{url('/dashboard/status')}}">Kerja Mekanik</a></li>
                         <li><i class="fa fa-table"></i><a href="{{url('/dashboard/transaksi')}}">Laporan Penghasilan</a></li>
                         <li><i class="fa fa-star"></i><a href="{{url('/dashboard/rating')}}">Rating</a></li>
                     </ul>

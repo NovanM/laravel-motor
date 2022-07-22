@@ -24,7 +24,7 @@ class Transaksi extends Model
     }
     public function sparepart()
     {
-        return $this->hasOne(Sparepart::class ,'id','sparepart');
+        return $this->hasOne(Sparepart::class ,'id','sparepart_id');
     }
     public function getCreatedAt ($value){
         return Carbon::parse($value)->timestamp;

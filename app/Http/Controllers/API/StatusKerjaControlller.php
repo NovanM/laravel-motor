@@ -19,7 +19,7 @@ class StatusKerjaControlller extends Controller
 
 
        if ($id) {
-        $statuskerja = StatusKerja::find($id);
+        $statuskerja = StatusKerja::find($id)->where('user_id', $request->user()->id);
         if ($statuskerja) {
             return ResponseFormatter::success($statuskerja, 'Data Layanan Service');
         }else{
@@ -34,5 +34,14 @@ class StatusKerjaControlller extends Controller
         'Data List Layanan'
        );
     }
+
+    public function update(Request $request, $id)
+    {
+        $statuskerja = StatusKerja::findOrFail($id);
+        $statuskerja->update($request->all());
+
+        return ResponseFormatter::success($statuskerja, 'Transaksi di berbaruhi');
+    }
+
     
 }

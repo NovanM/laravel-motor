@@ -33,7 +33,10 @@ Route::prefix('dashboard')
         Route::resource('sparepart', 'SparepartController');
         Route::resource('layanan', 'LayananServiceController');
         Route::resource('rating', 'RatingController');
+        Route::resource('status', 'StatusKerjaController');
         Route::get('transaksi', 'TransaksiController@index');
+        Route::get('transaksi/pesanan', 'TransaksiController@periodic')->name('periode');
+        Route::get('transaksi/download', 'TransaksiController@exportExcel')->name('download-transaksi');
     });
 
 // Route::get('/home', 'HomeController@index')->name('home');

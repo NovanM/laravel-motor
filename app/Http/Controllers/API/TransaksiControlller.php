@@ -90,7 +90,7 @@ class TransaksiControlller extends Controller
         Config::$isProduction = config('services.midtrans.isProduction');
         Config::$isSanitized = config('services.midtrans.isSanitized');
         Config::$is3ds = config('services.midtrans.is3ds');
-
+   
 
         $transaction = Transaksi::with(['layanan','user','sparepart'])->find($transaction->id);
 
@@ -112,7 +112,9 @@ class TransaksiControlller extends Controller
 
             $transaction->payment_url = $paymentUrl;
             $transaction->save();
-            $status_kerja->save();
+            if ($request->layanan_id != null) {
+                $status_kerja->save();
+            }
 
             return ResponseFormatter::success($transaction,'Tranksaksi berhasil');
         } catch (Exception $e) {

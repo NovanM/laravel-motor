@@ -2,14 +2,6 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{asset('public/vendors/bootstrap/dist/css/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{asset('public/vendors/font-awesome/css/font-awesome.min.css')}}">
-<link rel="stylesheet" href="{{asset('public/vendors/themify-icons/css/themify-icons.css')}}">
-<link rel="stylesheet" href="{{asset('public/vendors/flag-icon-css/css/flag-icon.min.css')}}">
-<link rel="stylesheet" href="{{asset('public/vendors/selectFX/css/cs-skin-elastic.css')}}">
-
-<link rel="stylesheet" href="{{asset('public/assets/css/style.css')}}">
-
 <div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
@@ -125,12 +117,4 @@
 
 
 
-    <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script>
-    <script src="{{asset('vendors/popper.js/dist/umd/popper.min.js')}}"></script>
-
-    <script src="{{asset('vendors/jquery-validation/dist/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js')}}"></script>
-
-    <script src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/main.js')}}"></script>
     @endsection

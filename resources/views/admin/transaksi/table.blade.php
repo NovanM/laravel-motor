@@ -18,7 +18,13 @@
             <td>000{{$row->id}}</td>
             <td>{{date('d F Y',strtotime($row->created_at))}}</td>
             <td>{{$row->user->name}}</td>
-            <td>{{$row->status}}</td>
+            @if($row->status == 'pending')
+            <td><label class="badge badge-warning">{{$row->status}}</label></td>
+            @elseif($row->status=='success')
+            <td> <label class="badge badge-success">{{$row->status}}</label></td>
+            @else
+            <td><label class="badge badge-danger">{{$row->status}}</label></td>
+            @endif
             <td>@currency($row->total)</td>
             <td><a class="btn btn-primary" href="{{$row->payment_url}}">Goto Link</a></td>
 

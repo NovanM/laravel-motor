@@ -28,7 +28,11 @@ class TransaksiExport implements FromArray,WithHeadings
     {   
         $data = [];
         $i=0;
-        $transaction = Transaksi::with('user','layanan','sparepart')->whereDate('created_at','>=', $this->dari)->whereDate('created_at','<=',$this->sampai)->orderBy('created_at','desc')->get();
+        if ($this->dari == null || $this->sampai == null) {
+            $transaction = Transaksi::with('user','layanan','sparepart')->get();
+        }else {
+            $transaction = Transaksi::with('user','layanan','sparepart')->whereDate('created_at','>=', $this->dari)->whereDate('created_at','<=',$this->sampai)->orderBy('created_at','desc')->get();
+        }
         foreach ($transaction as $value) {
             if ($value->layanan != null) {
                 array_push($data,[

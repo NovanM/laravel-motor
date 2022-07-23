@@ -27,6 +27,7 @@ class TransaksiController extends Controller
     public function periodic(Request $request)
     {
         try{
+
             $dari = $request->dari;
             $sampai = $request->sampai;
             $total = Transaksi::whereDate('created_at','>=', $dari)->whereDate('created_at','<=',$sampai)->sum('total');
@@ -41,9 +42,13 @@ class TransaksiController extends Controller
     }
     public function exportExcel(Request $request)
     {   
-     
-        $date_mount = date('F');
-        return Excel::download(new TransaksiExport($request->dari_ke,$request->sampai_ke), "$date_mount Transaksi.xlsx");
+       
+        if ($request->dari_ke == null || $request->sampai_ke == null) {
+        
+            return Excel::download(new TransaksiExport(null,null), "Data Transaksi.xlsx");    
+        }
+        
+        return Excel::download(new TransaksiExport($request->dari_ke,$request->sampai_ke), "Data Transaksi.xlsx");
         
 
     }

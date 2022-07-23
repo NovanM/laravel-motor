@@ -20,8 +20,6 @@ class TransaksiController extends Controller
 
        
 
-
-
         return view('admin.transaksi.index', compact('pagename', 'allTransaksi','total', ));
 
     }

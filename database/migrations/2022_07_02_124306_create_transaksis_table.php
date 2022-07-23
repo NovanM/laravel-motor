@@ -17,6 +17,7 @@ class CreateTransaksisTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('layanan_id');
+            $table->integer('sparepart_id');
             $table->integer('total')->nullable();
             $table->string('status')->default('pending');
             $table->string('payment_url')->nullable();

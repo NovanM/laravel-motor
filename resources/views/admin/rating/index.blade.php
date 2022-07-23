@@ -67,7 +67,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-outline-danger"  type="submit">Delete</button> 
-                                            <a href="{{route('rating.edit', $row ->id)}}" class="btn btn-outline-primary ml-3" >Edit</a>
+                                            <a href="{{route('rating.show', $row ->id)}}" class="btn btn-warning ml-3 text-bold" >Detail</a>
                                         </form>
                                     
 

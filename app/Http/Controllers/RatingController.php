@@ -50,6 +50,9 @@ class RatingController extends Controller
     public function show($id)
     {
         //
+        $pagename = 'Detail Data Rating';
+        $data = Rating::find($id);
+        return view('admin.rating.show', compact('data', 'pagename',));
     }
 
     /**
@@ -61,9 +64,7 @@ class RatingController extends Controller
     public function edit($id)
     {
         //
-        $pagename = 'Update Data Rating';
-        $data = Rating::find($id);
-        return view('admin.rating.edit', compact('data', 'pagename',));
+       
     }
 
     /**

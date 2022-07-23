@@ -57,7 +57,7 @@
                               
                                 <tr>
                                     <td>{{++$i}}</td>
-                                    <td>{{$row->layanan->jenis_layanan}}</td>
+                                    <td>{{$row->layanan}}</td>
                                     <td>{{$row->user->name}}</td>
                                     <td>{{$row->status_kerja}}</td>
                                     

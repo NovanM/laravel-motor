@@ -5,6 +5,7 @@
             <th>ID Transaksi</th>
             <th>Waktu Transaksi</th>
             <th>Nama Pelanggan</th>
+            <th>Status</th>
             <th>Total</th>
             <th>URL Pembayaran</th>
         </tr>
@@ -17,6 +18,7 @@
             <td>000{{$row->id}}</td>
             <td>{{date('d F Y',strtotime($row->created_at))}}</td>
             <td>{{$row->user->name}}</td>
+            <td>{{$row->status}}</td>
             <td>@currency($row->total)</td>
             <td><a class="btn btn-primary" href="{{$row->payment_url}}">Goto Link</a></td>
 

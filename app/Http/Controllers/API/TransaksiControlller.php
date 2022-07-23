@@ -51,7 +51,7 @@ class TransaksiControlller extends Controller
         $transaction = Transaksi::findOrFail($id);
         $transaction->update($request->all());
 
-        return ResponseFormatter::success($transaction, 'Transaksi di berbaruhi');
+        return ResponseFormatter::success($transaction, 'Transaksi di perbaruhi');
     }
 
 

@@ -8,7 +8,7 @@ class Sparepart extends Model
 {
     //
     protected $fillable = [
-        'suplier_id', 'kode', 'nama',
+        'suplier_id', 'kode', 'nama','nama_sparepart',
         'stok','harga','images'
     ];
 

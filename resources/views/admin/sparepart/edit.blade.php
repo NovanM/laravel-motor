@@ -59,10 +59,10 @@
                                     <select class="form-control"  name="nama" value="{{$data->nama}}" id="">
                                        
                                         
-                                            <option  @if($dataSupplier->nama_sparepart==$data->name)
+                                            <option   
                                                         selected
-                                                    @endif>
-                                            {{$dataSupplier->nama_sparepart}}
+                                                   >
+                                            {{$data->supplier->nama_sparepart}}
                                             </option>
                                         
                                         

@@ -61,7 +61,7 @@
                                 <tr>
                                     <td>{{++$i}}</td>
                                     <td>{{$row->kode}}</td>
-                                    <td>{{$row->nama}}</td>
+                                    <td>{{$row->supplier->nama_sparepart}}</td>
                                     <td>{{$row->stok}}</td>
                                     <td><img src="{{url('images/'.$row->images)}}" alt="" width="50" height="50"></td>
                                     <td>Rp {{$row->harga}}</td>

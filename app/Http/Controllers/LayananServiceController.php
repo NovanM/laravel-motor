@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\LayananService;
+use App\StatusKerja;
 use Illuminate\Http\Request;
 
 class LayananServiceController extends Controller
@@ -117,7 +118,10 @@ class LayananServiceController extends Controller
     {
         //
         $data = LayananService::find($id);
-
+        $statusMekanik = StatusKerja::all()->where('layanan_id', $data->id);
+        foreach ($statusMekanik as $value) {
+            $value->delete();
+        }
         $data->delete();
         return redirect('dashboard/layanan')->with('success', 'Layanan Service Deleted');
     }

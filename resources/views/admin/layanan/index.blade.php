@@ -60,7 +60,7 @@
                                     <td>{{++$i}}</td>
                                     <td>{{$row->jenis_layanan}}</td>
                                     <td>{{$row->keterangan}}</td>
-                                    <td>Rp {{$row->harga}}</td>
+                                    <td> @currency($row->harga)</td>
                                     <td>
                                         
                                         <form class="form-inline" action="{{route('layanan.destroy', $row ->id)}}" method="post" >

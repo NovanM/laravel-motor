@@ -18,9 +18,9 @@
             <td>000{{$row->id}}</td>
             <td>{{date('d F Y',strtotime($row->created_at))}}</td>
             <td>{{$row->user->name}}</td>
-            @if($row->status == 'pending')
+            @if($row->status == 'pending' || $row->status == 'PENDING')
             <td><label class="badge badge-warning">{{$row->status}}</label></td>
-            @elseif($row->status=='success')
+            @elseif($row->status=='success' || $row->status=='SUCCESS')
             <td> <label class="badge badge-success">{{$row->status}}</label></td>
             @else
             <td><label class="badge badge-danger">{{$row->status}}</label></td>

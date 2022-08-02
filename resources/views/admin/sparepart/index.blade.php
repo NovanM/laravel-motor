@@ -64,7 +64,7 @@
                                     <td>{{$row->supplier->nama_sparepart}}</td>
                                     <td>{{$row->stok}}</td>
                                     <td><img src="{{url('images/'.$row->images)}}" alt="" width="50" height="50"></td>
-                                    <td>Rp {{$row->harga}}</td>
+                                    <td>@currency($row->harga)</td>
                                     <td>
                                         
                                         <form class="form-inline" action="{{route('sparepart.destroy', $row ->id)}}" method="post" >

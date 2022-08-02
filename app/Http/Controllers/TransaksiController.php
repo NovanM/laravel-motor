@@ -14,7 +14,7 @@ class TransaksiController extends Controller
     //
     public function index()
     {
-        $pagename = 'Data Laporan Transaksi';
+        $pagename = 'Data Laporan Keuangan';
         $allTransaksi = Transaksi::orderBy('created_at','desc')->get();
         $total = Transaksi::sum('total');
 

@@ -46,7 +46,7 @@
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>Jenis Layanan</th>
                                     <th>Keterangan</th>
                                     <th>Harga</th>

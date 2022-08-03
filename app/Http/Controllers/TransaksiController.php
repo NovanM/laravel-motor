@@ -16,10 +16,15 @@ class TransaksiController extends Controller
     {
         $pagename = 'Data Laporan Keuangan';
         $allTransaksi = Transaksi::orderBy('created_at','desc')->get();
-        $total = Transaksi::sum('total');
+        $total = 0;
+        foreach ($allTransaksi  as $value) {
+            if ($value->status == 'success' || $value->status == 'SUCCESS') {
+                $total += $value->total;
+            }
+        }
 
        
-
+        
         return view('admin.transaksi.index', compact('pagename', 'allTransaksi','total', ));
 
     }

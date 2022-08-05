@@ -39,7 +39,7 @@
                         <h4 class="mb-0">
                             <span class="count">{{$pelanggan}}</span>
                         </h4>
-                        <p class="text-light">Pelanggan</p>
+                        <p class="text-light">Jumlah Pelanggan</p>
 
                         <div class="chart-wrapper px-0" style="height:70px;" height="70">
                             <canvas id="widgetChart1"></canvas>
@@ -61,7 +61,7 @@
                         <h4 class="mb-0">
                             <span class="count">{{$mekanik}}</span>
                         </h4>
-                        <p class="text-light">Mekanik</p>
+                        <p class="text-light">Jumlah Mekanik</p>
 
                         <div class="chart-wrapper px-0" style="height:70px;" height="70">
                             <canvas id="widgetChart2"></canvas>
@@ -82,7 +82,7 @@
                         <h4 class="mb-0">
                             <span class="count">{{$supplier}}</span>
                         </h4>
-                        <p class="text-light">Supplier</p>
+                        <p class="text-light">Jumlah Supplier</p>
 
                         <div class="chart-wrapper px-0" style="height:70px;" height="70">
                             <canvas id="widgetChart3"></canvas>
@@ -102,7 +102,7 @@
                         <h4 class="mb-0">
                             <span class="count">{{$sparepart}}</span>
                         </h4>
-                        <p class="text-light">Sparepart</p>
+                        <p class="text-light">Jumlah Sparepart</p>
 
                     </div>
 
@@ -123,7 +123,7 @@
                         <h4 class="mb-0">
                             <span class="count">{{$layanan}}</span>
                         </h4>
-                        <p class="text-light">Layanan</p>
+                        <p class="text-light">Jumlah Layanan</p>
 
                         <div class="chart-wrapper px-3" style="height:70px;" height="70">
                             <canvas id="widgetChart4"></canvas>
@@ -158,7 +158,7 @@
                         <div class="stat-widget-one">
                             <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
                             <div class="stat-content dib">
-                                <div class="stat-text">laporan Profit</div>
+                                <div class="stat-text">Laporan Keuanggan</div>
                                 <div class="stat-digit">@currency($laporan)</div>
                             </div>
                         </div>

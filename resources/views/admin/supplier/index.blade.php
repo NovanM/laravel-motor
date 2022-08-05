@@ -48,7 +48,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
                                     <th>Telepon</th>
                                    
                                     <th>Alamat</th>

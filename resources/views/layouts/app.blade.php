@@ -18,10 +18,24 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+                .bg-img-login {
+                    position: relative;
+                    top: -60px;
+                background: url("images/bg-iz.jpeg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                height: 1000px;
+                background-color: rgba(0,0,0,0.5);
+            }
+
+
+
+    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark sticky-top " style="background:transparent;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                 IZ Motor Clinic
@@ -68,7 +82,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 bg-img-login" >
             @yield('content')
         </main>
     </div>

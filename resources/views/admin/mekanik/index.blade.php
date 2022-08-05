@@ -51,7 +51,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
                                     <th>Email</th>
                                     <th>Role</th>
                                     <th>Telepon</th>

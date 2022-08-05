@@ -47,7 +47,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
                                     <th>Email</th>
                                     <th>Telepon</th>
                                     <th>Role</th>

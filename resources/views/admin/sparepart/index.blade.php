@@ -46,10 +46,10 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>kode</th>                                   
-                                    <th>nama</th>
+                                    <th>Kode</th>                                   
+                                    <th>Nama</th>
                                     <th>Stok</th>
-                                    <th>Images </th>
+                                    <th>Gambar </th>
                                     <th>Harga</th>
                                     <th>Action</th>
                                 </tr>

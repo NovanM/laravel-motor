@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
+use App\LayananService;
+use App\Sparepart;
 use App\StatusKerja;
 use App\Transaksi;
 use Exception;
@@ -62,9 +64,11 @@ class TransaksiControlller extends Controller
         ]);
 
         if ($request->layanan_id != null) {
+            $namaLayanan = LayananService::find($request->layanan_id);
             $transaction = Transaksi::create([
                 'layanan_id' => $request->layanan_id,
                 'user_id'=>$request->user()->id,
+                'nama_layanan' => $namaLayanan->jenis_layanan,
                 'total'=>$request->total,
                 'status'=>$request->status,
                 'payment_url'=>'',
@@ -77,9 +81,11 @@ class TransaksiControlller extends Controller
             ]);
 
         }else{
+            $namaLayanan = Sparepart::find($request->sparepart_id);
             $transaction = Transaksi::create([
                 'sparepart_id' => $request->sparepart_id,
                 'user_id'=>$request->user()->id,
+                'nama_layanan'=>$namaLayanan->nama,
                 'total'=>$request->total,
                 'status'=>$request->status,
                 'payment_url'=>'',

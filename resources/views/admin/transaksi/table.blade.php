@@ -20,7 +20,7 @@
             <td>{{date('d F Y',strtotime($row->created_at))}}</td>
             <td>{{$row->user->name}}</td>
             
-            <td>{{$row->layanan? 'Service '.$row->layanan->jenis_layanan:'Pembelian '. $row->sparepart->nama }}</td>
+            <td>{{$row->layanan? 'Service '.$row->nama_layanan:'Pembelian '. $row->nama_layanan }}</td>
             @if($row->status == 'pending' || $row->status == 'PENDING')
             <td><label class="badge badge-warning">{{$row->status}}</label></td>
             @elseif($row->status=='success' || $row->status=='SUCCESS')

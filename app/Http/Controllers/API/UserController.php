@@ -118,6 +118,12 @@ class UserController extends Controller
         $pelanggan = Pelanggan::where('user_id',$user->id)->first();
         $pelanggan->update($data);
 
-        return ResponseFormatter::success($user, 'Profile Updated');
+        return ResponseFormatter::success([
+            'email'=>$user->email,
+            'name'=>$user->name,
+            'telepon'=>$user->telepon,
+            'alamat'=>$user->pelanggan->alamat,
+            'koordinator_lokasi'=>$user->pelanggan->koordinator_lokasi,
+        ], 'Profile Updated');
     }
 }

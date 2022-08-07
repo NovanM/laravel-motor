@@ -35,9 +35,15 @@ class TransaksiController extends Controller
 
             $dari = $request->dari;
             $sampai = $request->sampai;
-            $total = Transaksi::whereDate('created_at','>=', $dari)->whereDate('created_at','<=',$sampai)->sum('total');
+      
             $pagename = 'Data Laporan Transaksi '.$request->$dari .'sampai '.$request->sampai;
             $allTransaksi = Transaksi::whereDate('created_at','>=', $dari)->whereDate('created_at','<=',$sampai)->orderBy('created_at','desc')->get();
+            $total = 0;
+            foreach ($allTransaksi  as $value) {
+                if ($value->status == 'success' || $value->status == 'SUCCESS') {
+                    $total += $value->total;
+                }
+            }
             return view('admin.transaksi.index', compact('pagename', 'allTransaksi','total',));
 
         }catch(\Exception $e){

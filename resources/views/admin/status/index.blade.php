@@ -48,6 +48,8 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Layanan</th>
+                                    <th>ID Tranksaksi</th>
+                                    <th>Waktu Tranksaksi</th>
                                     <th>Nama Mekanik</th>
                                     <!-- DITERIMA SAMPAI SELESAI -->
                                     <th>Status Kerja</th>
@@ -58,7 +60,9 @@
                               
                                 <tr>
                                     <td>{{++$i}}</td>
-                                    <td>{{$row->layanan->jenis_layanan}}</td>
+                                    <td>{{$row->transaksi->nama_layanan}}</td>
+                                    <td>0000{{$row->transaksi->id}}</td>
+                                    <td>{{date('d F Y h:m',strtotime($row->created_at))}}</td>
                                     <td>{{$row->user->name}}</td>
                                     <td>{{$row->status_kerja}}</td>
                                     

@@ -8,7 +8,7 @@ class StatusKerja extends Model
 {
     //
     protected $fillable = [
-        'layanan_id', 'status_kerja', 'password','user_id',
+        'layanan_id', 'status_kerja', 'password','user_id','transaksi_id'
        
     ];
 
@@ -19,5 +19,9 @@ class StatusKerja extends Model
     public function user()
     {
         return $this->hasOne(User::class ,'id','user_id');
+    }
+
+    public function transaksi(){
+        return $this->hasOne(Transaksi::class ,'id','transaksi_id');
     }
 }

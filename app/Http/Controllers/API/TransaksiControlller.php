@@ -75,9 +75,11 @@ class TransaksiControlller extends Controller
             ]);
 
             $status_kerja = StatusKerja::create([
+                'transaksi_id'=>$transaction->id,
                 'layanan_id'=>$request->layanan_id,
                 'user_id'=>$request->user()->id,
-                'status_kerja'=>'Order Diterima Mekanik'
+                'status_kerja'=>'Diterima'
+                
             ]);
 
         }else{

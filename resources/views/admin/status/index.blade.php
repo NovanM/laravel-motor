@@ -64,7 +64,7 @@
                                     <td>0000{{$row->transaksi->id}}</td>
                                     <td>{{date('d F Y h:m',strtotime($row->created_at))}}</td>
                                     <td>{{$row->user->name}}</td>
-                                    <td>{{$row->status_kerja}}</td>
+                                    <td> <label class="badge badge-success">{{$row->status_kerja}}</label></td>
                                     
 
                                 </tr>

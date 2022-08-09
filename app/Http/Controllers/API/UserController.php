@@ -34,14 +34,16 @@ class UserController extends Controller
             if(!Hash::check($request->password,$user->password)){
                 throw new \Exception('Invalid Credentials');
             }
-
-
+            
+            $pelanggan=Pelanggan::where('user_id',$user->id)->first();
+           
             $tokenResult = $user->createToken('authToken')->plainTextToken;
             return ResponseFormatter::success(
                 [
                     'access_token'=>$tokenResult,
                     'token_type'=>'Bearer',
-                    'user'=>$user
+                    'user'=>$user,
+                    'pelanggan_id'=>$pelanggan->id,
                 ],'Authenticated'
             );
         }catch(Exception $e){
@@ -106,6 +108,7 @@ class UserController extends Controller
             'telepon'=>$user->telepon,
             'alamat'=>$user->pelanggan->alamat,
             'koordinator_lokasi'=>$user->pelanggan->koordinator_lokasi,
+            'pelanggan_id'=>$user->pelanggan->id,
         ], "Data user Profile");
     }
 

@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('user', 'API\UserController@updateProfile');
     // Route::get('user', 'UserController@, 'fetch');
     Route::post('logout', 'API\UserController@logout');
-    Route::get('transaction','API\TransaksiControlller@all');
+    Route::get('transaction/{pelanggan}','API\TransaksiControlller@all');
     Route::post('transaction','API\TransaksiControlller@checkout');
     Route::post('transaction/{id}','API\TransaksiControlller@update');
     Route::get('rating', 'API\RatingController@all');

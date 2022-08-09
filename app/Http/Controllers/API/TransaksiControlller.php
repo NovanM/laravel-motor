@@ -19,34 +19,34 @@ use Midtrans\Snap;
 class TransaksiControlller extends Controller
 {
     //
-    public function all(Request $request)
+    public function all($pelanggan)
     {
-        $id = $request->input('id');
-        $limit = $request->input('limit', 6);
-        $layanan_id = $request->input('layanan_id');
-        $pelanggan_id = $request->input('pelanggan_id');
+        // $id = $request->input('id');
+        $limit = 5;
+        // $layanan_id = $request->input('layanan_id');
+        // $pelanggan_id = $request->input('pelanggan_id');
+       
+        // if ($id) {
+        //     $transaction = Transaksi::with(['layanan', 'user'])->find($id);
+        //     if ($transaction) {
+        //         return ResponseFormatter::success($transaction, 'Data tranksaksi Berhasil');
+        //     } else {
+        //         return ResponseFormatter::error(null, 'Transaksi Tidak Ada', 404);
+        //     }
+        // }
 
-        if ($id) {
-            $transaction = Transaksi::with(['layanan', 'user'])->find($id);
-            if ($transaction) {
-                return ResponseFormatter::success($transaction, 'Data tranksaksi Berhasil');
-            } else {
-                return ResponseFormatter::error(null, 'Transaksi Tidak Ada', 404);
-            }
-        }
+        // $transaction = Transaksi::with(['layanan', 'user'])
+        //     ->where('user_id', Auth::user()->id);
 
-        $transaction = Transaksi::with(['layanan', 'user'])
-            ->where('user_id', Auth::user()->id);
-
-        if ($layanan_id) {
-            $transaction->where('layanan_id', $layanan_id);
-        }
-        if ($pelanggan_id) {
-            $transaction = Transaksi::with(['layanan_service', 'user','sparepart'])->where('pelanggan_id', $pelanggan_id);
+        // if ($layanan_id) {
+        //     $transaction->where('layanan_id', $layanan_id);
+        // }
+        if ($pelanggan) {
+            $transaction = Transaksi::with(['layanan', 'user','sparepart'])->where('pelanggan_id', $pelanggan)->get();
         }
 
         return ResponseFormatter::success(
-            $transaction->paginate($limit),
+            $transaction,
             'Data transaksi'
         );
     }

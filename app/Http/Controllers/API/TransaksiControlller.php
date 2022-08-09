@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 use App\LayananService;
+use App\Pelanggan;
 use App\Sparepart;
 use App\StatusKerja;
 use App\Transaksi;
@@ -23,10 +24,10 @@ class TransaksiControlller extends Controller
         $id = $request->input('id');
         $limit = $request->input('limit', 6);
         $layanan_id = $request->input('layanan_id');
-
+        $pelanggan_id = $request->input('pelanggan_id');
 
         if ($id) {
-            $transaction = Transaksi::with(['layanan_service', 'user'])->find($id);
+            $transaction = Transaksi::with(['layanan', 'user'])->find($id);
             if ($transaction) {
                 return ResponseFormatter::success($transaction, 'Data tranksaksi Berhasil');
             } else {
@@ -34,13 +35,15 @@ class TransaksiControlller extends Controller
             }
         }
 
-        $transaction = Transaksi::with(['layanan_service', 'user'])
+        $transaction = Transaksi::with(['layanan', 'user'])
             ->where('user_id', Auth::user()->id);
 
         if ($layanan_id) {
             $transaction->where('layanan_id', $layanan_id);
         }
-
+        if ($pelanggan_id) {
+            $transaction = Transaksi::with(['layanan_service', 'user','sparepart'])->where('pelanggan_id', $pelanggan_id);
+        }
 
         return ResponseFormatter::success(
             $transaction->paginate($limit),
@@ -66,12 +69,14 @@ class TransaksiControlller extends Controller
 
         if ($request->layanan_id != null) {
             $namaLayanan = LayananService::find($request->layanan_id);
+            
             $transaction = Transaksi::create([
                 'layanan_id' => $request->layanan_id,
                 'user_id' => $request->user()->id,
                 'nama_layanan' => $namaLayanan->jenis_layanan,
                 'total' => $request->total,
                 'status' => $request->status,
+                'pelanggan_id' =>0,
                 'payment_url' => '',
             ]);
         } else {
@@ -82,6 +87,7 @@ class TransaksiControlller extends Controller
                 'nama_layanan' => $namaLayanan->nama,
                 'total' => $request->total,
                 'status' => $request->status,
+                'pelanggan_id'=>0,
                 'payment_url' => '',
             ]);
         }
@@ -109,8 +115,11 @@ class TransaksiControlller extends Controller
 
         try {
             $paymentUrl = Snap::createTransaction($midtrans)->redirect_url;
+            $idPelanggan = Pelanggan::where('user_id', $transaction->user_id)->first();
 
+            
             $transaction->payment_url = $paymentUrl;
+            $transaction->pelanggan_id = $idPelanggan->id;
             $transaction->save();
     
             return ResponseFormatter::success($transaction, 'Tranksaksi berhasil');

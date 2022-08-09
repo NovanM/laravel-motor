@@ -10,7 +10,7 @@ class Transaksi extends Model
     //
     protected $fillable = [
         'user_id', 'layanan_id', 'total','sparepart_id',
-        'status','paymen_url','nama_layanan'
+        'status','paymen_url','nama_layanan','pelanggan_id'
         
     ];
 
@@ -25,6 +25,9 @@ class Transaksi extends Model
     public function sparepart()
     {
         return $this->hasOne(Sparepart::class ,'id','sparepart_id');
+    }
+    public function pelanggan(){
+        return $this->hasOne(Pelanggan::class,'id','pelanggan_id');
     }
     public function getCreatedAt ($value){
         return Carbon::parse($value)->timestamp;

@@ -57,41 +57,32 @@ class TransaksiControlller extends Controller
     }
 
 
-    public function checkout(Request $request){
+    public function checkout(Request $request)
+    {
         $request->validate([
-            'total'=>'required',
-            'status'=>'required',
+            'total' => 'required',
+            'status' => 'required',
         ]);
 
         if ($request->layanan_id != null) {
             $namaLayanan = LayananService::find($request->layanan_id);
             $transaction = Transaksi::create([
                 'layanan_id' => $request->layanan_id,
-                'user_id'=>$request->user()->id,
+                'user_id' => $request->user()->id,
                 'nama_layanan' => $namaLayanan->jenis_layanan,
-                'total'=>$request->total,
-                'status'=>$request->status,
-                'payment_url'=>'',
+                'total' => $request->total,
+                'status' => $request->status,
+                'payment_url' => '',
             ]);
-
-            $status_kerja = StatusKerja::create([
-                'transaksi_id'=>$transaction->id,
-                'layanan_id'=>$request->layanan_id,
-                //Check Mekanik User
-                'user_id'=>$request->user()->id,
-                'status_kerja'=>'Diterima'
-                
-            ]);
-
-        }else{
+        } else {
             $namaLayanan = Sparepart::find($request->sparepart_id);
             $transaction = Transaksi::create([
                 'sparepart_id' => $request->sparepart_id,
-                'user_id'=>$request->user()->id,
-                'nama_layanan'=>$namaLayanan->nama,
-                'total'=>$request->total,
-                'status'=>$request->status,
-                'payment_url'=>'',
+                'user_id' => $request->user()->id,
+                'nama_layanan' => $namaLayanan->nama,
+                'total' => $request->total,
+                'status' => $request->status,
+                'payment_url' => '',
             ]);
         }
 
@@ -99,21 +90,21 @@ class TransaksiControlller extends Controller
         Config::$isProduction = config('services.midtrans.isProduction');
         Config::$isSanitized = config('services.midtrans.isSanitized');
         Config::$is3ds = config('services.midtrans.is3ds');
-   
 
-        $transaction = Transaksi::with(['layanan','user','sparepart'])->find($transaction->id);
+
+        $transaction = Transaksi::with(['layanan', 'user', 'sparepart'])->find($transaction->id);
 
         $midtrans = [
-            'transaction_details'=>[
+            'transaction_details' => [
                 'order_id' => $transaction->id,
-                'gross_amount'=>(int) $transaction->total,
+                'gross_amount' => (int) $transaction->total,
             ],
-            'customer_details' =>[
+            'customer_details' => [
                 'first_name' => $transaction->user->name,
-                'email'=>$transaction->user->email,
+                'email' => $transaction->user->email,
             ],
-            'enabled_payments'=>['gopay','bank_transfer'],
-            'vtweb'=>[]
+            'enabled_payments' => ['gopay', 'bank_transfer'],
+            'vtweb' => []
         ];
 
         try {
@@ -121,15 +112,11 @@ class TransaksiControlller extends Controller
 
             $transaction->payment_url = $paymentUrl;
             $transaction->save();
-            if ($request->layanan_id != null) {
-                $status_kerja->save();
-            }
-
-            return ResponseFormatter::success($transaction,'Tranksaksi berhasil');
+    
+            return ResponseFormatter::success($transaction, 'Tranksaksi berhasil');
         } catch (Exception $e) {
-            return ResponseFormatter::error($e->getMessage(),'Transaksi Gagal');
+            return ResponseFormatter::error($e->getMessage(), 'Transaksi Gagal');
         }
-        
     }
 
     public function callback(Request $request)
@@ -149,34 +136,46 @@ class TransaksiControlller extends Controller
 
         $transaction = Transaksi::findOrFail($order_id);
 
-        if($status == 'capture'){
+        if ($status == 'capture') {
             if ($type == 'credit_card') {
-                if($fraud == 'challenge'){
+                if ($fraud == 'challenge') {
                     $transaction->status = 'PENDING';
-                }
-                else{
-                    $transaction->status ='SUCCESS';
+                } else {
+
+                    $status_kerja = StatusKerja::create([
+                        'transaksi_id' => $transaction->id,
+                        'layanan_id' => $request->layanan_id,
+                        //Check Mekanik User
+                        'user_id' => $request->user()->id,
+                        'status_kerja' => 'Diterima'
+
+                    ]);
+                    $status_kerja->save();
+                    $transaction->status = 'SUCCESS';
                 }
             }
-        }else if($status == 'settlement'){
-            $transaction->status ='SUCCESS';
-        }else if($status == 'pending'){
+        } else if ($status == 'settlement') {
+            $status_kerja = StatusKerja::create([
+                'transaksi_id' => $transaction->id,
+                'layanan_id' => $request->layanan_id,
+                //Check Mekanik User
+                'user_id' => $request->user()->id,
+                'status_kerja' => 'Diterima'
+
+            ]);
+            $status_kerja->save();
+            $transaction->status = 'SUCCESS';
+        } else if ($status == 'pending') {
             $transaction->status = 'PENDING';
-        }else if($status == 'deny'){
+        } else if ($status == 'deny') {
             $transaction->status = 'CANCELLED';
-        }else if($status == 'expire'){
+        } else if ($status == 'expire') {
             $transaction->status = 'CANCELLED';
-        }else if($status == 'cancel'){
+        } else if ($status == 'cancel') {
             $transaction->status = 'CANCELLED';
         }
 
 
         $transaction->save();
     }
-
-
-
-
-    
-
 }

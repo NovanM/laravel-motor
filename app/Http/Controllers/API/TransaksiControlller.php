@@ -134,6 +134,7 @@ class TransaksiControlller extends Controller
                 if ($fraud == 'challenge') {
                     $transaction->status = 'PENDING';
                 } else {
+                    $transaction->status = 'SUCCESS';
 
                     $status_kerja = StatusKerja::create([
                         'transaksi_id' => $transaction->id,
@@ -144,10 +145,10 @@ class TransaksiControlller extends Controller
 
                     ]);
                     $status_kerja->save();
-                    $transaction->status = 'SUCCESS';
                 }
             }
         } else if ($status == 'settlement') {
+            $transaction->status = 'SUCCESS';
             $status_kerja = StatusKerja::create([
                 'transaksi_id' => $transaction->id,
                 'layanan_id' => $request->layanan_id,
@@ -157,7 +158,6 @@ class TransaksiControlller extends Controller
 
             ]);
             $status_kerja->save();
-            $transaction->status = 'SUCCESS';
         } else if ($status == 'pending') {
             $transaction->status = 'PENDING';
         } else if ($status == 'deny') {

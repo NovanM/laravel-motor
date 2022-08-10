@@ -16,7 +16,7 @@ class StatusKerjaControlller extends Controller
         $id = $request->input('id');
         $limit = $request->input('limit', 6);
        
-
+        dd($id);
 
        if ($id) {
         $statuskerja = StatusKerja::find($id)->where('user_id', $request->user()->id);
@@ -27,7 +27,7 @@ class StatusKerjaControlller extends Controller
         }
        }
 
-       $statuskerja = StatusKerja::with(['layanan_service'])->where('layanan_id', $id);
+       $statuskerja = StatusKerja::with(['layanan'])->where('layanan_id', $id);
 
        return ResponseFormatter::success(
         $statuskerja->paginate($limit),

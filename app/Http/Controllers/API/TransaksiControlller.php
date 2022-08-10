@@ -21,32 +21,16 @@ class TransaksiControlller extends Controller
     //
     public function all($pelanggan)
     {
-        // $id = $request->input('id');
-        $limit = 5;
-        // $layanan_id = $request->input('layanan_id');
-        // $pelanggan_id = $request->input('pelanggan_id');
        
-        // if ($id) {
-        //     $transaction = Transaksi::with(['layanan', 'user'])->find($id);
-        //     if ($transaction) {
-        //         return ResponseFormatter::success($transaction, 'Data tranksaksi Berhasil');
-        //     } else {
-        //         return ResponseFormatter::error(null, 'Transaksi Tidak Ada', 404);
-        //     }
-        // }
-
-        // $transaction = Transaksi::with(['layanan', 'user'])
-        //     ->where('user_id', Auth::user()->id);
-
-        // if ($layanan_id) {
-        //     $transaction->where('layanan_id', $layanan_id);
-        // }
+   
         if ($pelanggan) {
-            $transaction = Transaksi::with(['layanan', 'user','sparepart'])->where('pelanggan_id', $pelanggan)->get();
+            $transaction = Transaksi::with(['pelanggan','user'])->where('pelanggan_id', $pelanggan)->get();
+        }else if($pelanggan == 0){
+            $transaction = Transaksi::with(['pelanggan','user'])->whereIn('status',['SUCCESS','success'])->get();
         }
 
         return ResponseFormatter::success(
-            $transaction,
+                $transaction,
             'Data transaksi'
         );
     }

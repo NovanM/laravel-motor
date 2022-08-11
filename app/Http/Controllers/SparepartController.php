@@ -110,7 +110,7 @@ class SparepartController extends Controller
     {
         //
         $request->validate([
-            'kode' => 'numeric|unique:spareparts',
+            'kode' => 'numeric|unique:spareparts,id,'. $id,
             'nama' => 'required',
             'harga' => 'required|numeric',
         ]);

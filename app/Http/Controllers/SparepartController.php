@@ -127,7 +127,7 @@ class SparepartController extends Controller
             $data->images = $request->file('images')->getClientOriginalName();
         }
 
-        $data->save();
+        $data->update();
         return redirect('dashboard/sparepart')->with('success', 'Sparepart Updated');
     }
 

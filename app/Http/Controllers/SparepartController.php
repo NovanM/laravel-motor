@@ -109,7 +109,11 @@ class SparepartController extends Controller
     public function update(Request $request, $id)
     {
         //
-       
+        $request->validate([
+            'kode' => 'required|numeric|unique:spareparts',
+            'nama' => 'required',
+            'harga' => 'required|numeric',
+        ]);
     
         $data = Sparepart::find($id);
 

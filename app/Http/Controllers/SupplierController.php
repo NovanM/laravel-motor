@@ -112,7 +112,7 @@ class SupplierController extends Controller
 
 
         $data->save();
-        return redirect('dashboard/supplier')->with('success', 'Supplier Created');
+        return redirect('dashboard/supplier')->with('success', 'Supplier Updated');
     }
 
     /**

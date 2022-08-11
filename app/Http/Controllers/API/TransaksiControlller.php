@@ -138,9 +138,9 @@ class TransaksiControlller extends Controller
 
                     $status_kerja = StatusKerja::create([
                         'transaksi_id' => $transaction->id,
-                        'layanan_id' => $request->layanan_id,
+                        'layanan_id' => $transaction->layanan_id,
                         //Check Mekanik User
-                        'user_id' => $request->user()->id,
+                        'user_id' => $transaction->user->id,
                         'status_kerja' => 'Diterima'
 
                     ]);
@@ -151,9 +151,9 @@ class TransaksiControlller extends Controller
             $transaction->status = 'SUCCESS';
             $status_kerja = StatusKerja::create([
                 'transaksi_id' => $transaction->id,
-                'layanan_id' => $request->layanan_id,
+                'layanan_id' => $transaction->layanan_id,
                 //Check Mekanik User
-                'user_id' => $request->user()->id,
+                'user_id' => $transaction->user->id,
                 'status_kerja' => 'Diterima'
 
             ]);

@@ -93,7 +93,7 @@ class TransaksiControlller extends Controller
                 'first_name' => $transaction->user->name,
                 'email' => $transaction->user->email,
             ],
-            'enabled_payments' => ['gopay', 'bank_transfer'],
+            // 'enabled_payments' => ['gopay', 'bank_transfer'],
             'vtweb' => []
         ];
 

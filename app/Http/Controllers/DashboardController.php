@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $sparepart = count(Sparepart::all());
        
         $layanan = count(LayananService::all());
-        $laporan = Transaksi::sum('total');
+        $laporan = Transaksi::whereIn('status',['SUCCESS','success'])->sum('total');
       
         return view('admin.dashboard', compact('pelanggan', 'supplier', 'mekanik', 'sparepart','layanan','laporan'));
     }

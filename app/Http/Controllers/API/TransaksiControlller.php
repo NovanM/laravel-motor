@@ -138,7 +138,7 @@ class TransaksiControlller extends Controller
                     $transaction->status = 'SUCCESS';
                     if ($transaction->sparepart != null) {
                         $sparepart = Sparepart::findOrFail($transaction->sparepart->id);
-                        $sparepart->stok--;
+                        $sparepart->stok-1;
                     }
                     $status_kerja = StatusKerja::create([
                         'transaksi_id' => $transaction->id,

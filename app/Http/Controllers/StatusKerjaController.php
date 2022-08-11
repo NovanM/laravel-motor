@@ -16,7 +16,7 @@ class StatusKerjaController extends Controller
     {
         //
 
-        $allMekanikStatus = StatusKerja::all();
+        $allMekanikStatus = StatusKerja::orderBy('created_at','desc')->get();
         $pagename = 'Data Status Kerja Mekanik';
 
         return view('admin.status.index', compact('allMekanikStatus', 'pagename'));

@@ -143,15 +143,17 @@ class TransaksiControlller extends Controller
                         $sparepart->stok = $dataStok;
                         $sparepart->save();
                     }
-                    $status_kerja = StatusKerja::create([
-                        'transaksi_id' => $transaction->id,
-                        'layanan_id' => $transaction->layanan_id,
-                        //Check Mekanik User
-                        'user_id' => $transaction->user->id,
-                        'status_kerja' => 'Diterima'
-
-                    ]);
-                    $status_kerja->save();
+                    if ($transaction->layanan_id != null) {
+                        $status_kerja = StatusKerja::create([
+                            'transaksi_id' => $transaction->id,
+                            'layanan_id' => $transaction->layanan_id,
+                            //Check Mekanik User
+                            'user_id' => $transaction->user->id,
+                            'status_kerja' => 'Diterima'
+    
+                        ]);
+                        $status_kerja->save();
+                    }
                 }
             }
         } else if ($status == 'settlement') {
@@ -163,15 +165,17 @@ class TransaksiControlller extends Controller
                 $sparepart->stok = $dataStok;
                 $sparepart->save();
             }
-            $status_kerja = StatusKerja::create([
-                'transaksi_id' => $transaction->id,
-                'layanan_id' => $transaction->layanan_id,
-                //Check Mekanik User
-                'user_id' => $transaction->user->id,
-                'status_kerja' => 'Diterima'
+            if ($transaction->layanan_id != null) {
+                $status_kerja = StatusKerja::create([
+                    'transaksi_id' => $transaction->id,
+                    'layanan_id' => $transaction->layanan_id,
+                    //Check Mekanik User
+                    'user_id' => $transaction->user->id,
+                    'status_kerja' => 'Diterima'
 
-            ]);
-            $status_kerja->save();
+                ]);
+                $status_kerja->save();
+            }
         } else if ($status == 'pending') {
             $transaction->status = 'PENDING';
         } else if ($status == 'deny') {

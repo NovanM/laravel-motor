@@ -129,13 +129,17 @@ class TransaksiControlller extends Controller
 
         $transaction = Transaksi::findOrFail($order_id);
 
+
         if ($status == 'capture') {
             if ($type == 'credit_card') {
                 if ($fraud == 'challenge') {
                     $transaction->status = 'PENDING';
                 } else {
                     $transaction->status = 'SUCCESS';
-
+                    if ($transaction->sparepart != null) {
+                        $sparepart = Sparepart::findOrFail($transaction->sparepart->id);
+                        $sparepart->stok--;
+                    }
                     $status_kerja = StatusKerja::create([
                         'transaksi_id' => $transaction->id,
                         'layanan_id' => $transaction->layanan_id,

@@ -40,6 +40,6 @@ Route::prefix('dashboard')
     });
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::get('midtrans/success', 'TransaksiController@success');
-Route::get('midtrans/unfinish', 'TransaksiController@unfinish');
-Route::get('midtrans/error', 'TransaksiController@error');
+Route::get('midtrans/success/', 'TransaksiController@success');
+Route::get('midtrans/unfinish/', 'TransaksiController@unfinish');
+Route::get('midtrans/error/', 'TransaksiController@error');

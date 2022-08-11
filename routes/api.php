@@ -33,7 +33,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('transaction','API\TransaksiControlller@checkout');
     Route::post('transaction/{id}','API\TransaksiControlller@update');
     Route::get('rating', 'API\RatingController@all');
-    Route::get('status-kerja','API\StatusKerjaControlller@all');    
+    Route::get('status-kerja/{id}','API\StatusKerjaControlller@all');    
+    Route::post('status-kerja/{id}','API\StatusKerjaControlller@update');    
 });
 
 Route::post('login', 'API\UserController@login');

@@ -51,7 +51,7 @@ class TransaksiControlller extends Controller
             'status' => 'required',
         ]);
 
-        if ($request->layanan_id != null) {
+        if ($request->layanan_id != 0 || $request->layanan_id != '0') {
             $namaLayanan = LayananService::find($request->layanan_id);
             
             $transaction = Transaksi::create([
@@ -136,14 +136,14 @@ class TransaksiControlller extends Controller
                     $transaction->status = 'PENDING';
                 } else {
                     $transaction->status = 'SUCCESS';
-                    if ($transaction->sparepart_id != null) {
+                    if ($transaction->sparepart_id != 0  ) {
                         $sparepart = Sparepart::findOrFail($transaction->sparepart_id);
                         $dataStok = $sparepart->stok;
                         $dataStok = $dataStok - 1;
                         $sparepart->stok = $dataStok;
                         $sparepart->save();
                     }
-                    if ($transaction->layanan_id != null) {
+                    if ($transaction->layanan_id != 0 ) {
                         $status_kerja = StatusKerja::create([
                             'transaksi_id' => $transaction->id,
                             'layanan_id' => $transaction->layanan_id,
@@ -158,14 +158,14 @@ class TransaksiControlller extends Controller
             }
         } else if ($status == 'settlement') {
             $transaction->status = 'SUCCESS';
-            if ($transaction->sparepart_id != null) {
+            if ($transaction->sparepart_id != 0) {
                 $sparepart = Sparepart::findOrFail($transaction->sparepart_id);
                 $dataStok = $sparepart->stok;
                 $dataStok = $dataStok - 1;
                 $sparepart->stok = $dataStok;
                 $sparepart->save();
             }
-            if ($transaction->layanan_id != null) {
+            if ($transaction->layanan_id != 0) {
                 $status_kerja = StatusKerja::create([
                     'transaksi_id' => $transaction->id,
                     'layanan_id' => $transaction->layanan_id,

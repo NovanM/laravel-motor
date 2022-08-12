@@ -35,7 +35,11 @@ class UserController extends Controller
                 throw new \Exception('Invalid Credentials');
             }
             
+          if ($user->role='user') {
             $pelanggan=Pelanggan::where('user_id',$user->id)->first();
+          }else{
+            $pelanggan=0;
+          }
            
             $tokenResult = $user->createToken('authToken')->plainTextToken;
             return ResponseFormatter::success(

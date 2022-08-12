@@ -20,34 +20,33 @@ class UserController extends Controller
                 'username' => 'required',
                 'password'=>'required'
             ]);
-
+            
             $credentials = request(['username','password']);
 
             if(!Auth::attempt($credentials)){
+               
                 return ResponseFormatter::error([
                     'message'=>'Unauthorized',
                     
                 ],'Authentication Failed',500);
             }
-
             $user = User::where('username',$request->username)->first();
             if(!Hash::check($request->password,$user->password)){
                 throw new \Exception('Invalid Credentials');
             }
             
+            
           if ($user->role='user') {
             $pelanggan=Pelanggan::where('user_id',$user->id)->first();
-          }else{
-            $pelanggan=0;
           }
-           
+         
             $tokenResult = $user->createToken('authToken')->plainTextToken;
             return ResponseFormatter::success(
                 [
                     'access_token'=>$tokenResult,
                     'token_type'=>'Bearer',
                     'user'=>$user,
-                    'pelanggan_id'=>$pelanggan->id,
+                    'pelanggan_id'=>$pelanggan->id ?? 0,
                 ],'Authenticated'
             );
         }catch(Exception $e){

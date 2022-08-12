@@ -64,7 +64,15 @@
                                     <td>0000{{$row->transaksi->id}}</td>
                                     <td>{{date('d F Y h:m',strtotime($row->created_at))}}</td>
                                     <td>{{$row->user->name}}</td>
-                                    <td> <label class="badge badge-success">{{$row->status_kerja}}</label></td>
+                                    <td> @if($row->status_kerja == 'Diterima')
+                                     <label class="badge badge-secondary">{{$row->status_kerja}}</label>
+                                        @elseif($row->status_kerja == 'Proses')
+                                        <label class="badge badge-danger">{{$row->status_kerja}}</label>
+                                        @else
+                                        <label class="badge badge-success">{{$row->status_kerja}}</label>
+                                        @endif
+
+                                    </td>
                                     
 
                                 </tr>

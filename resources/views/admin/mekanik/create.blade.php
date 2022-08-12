@@ -56,6 +56,10 @@
                             </div>
 
                             <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Username</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="username" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                            </div>
+                            <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email Address</label></div>
                                 <div class="col-12 col-md-9"><input type="text" id="text-input" name="email" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
@@ -77,13 +81,13 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="select" name="role" class=" form-control-label">Role</label></div>
                                 <div class="col-12 col-md-9">
-                                   mekanik
+                                    mekanik
                                 </div>
-                    
-                            </div>
-                            
 
-                           
+                            </div>
+
+
+
 
                             <button type="submit" class="btn btn-primary btn-sm mr-2">
                                 <i class="fa fa-dot-circle-o"></i> Save

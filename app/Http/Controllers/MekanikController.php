@@ -47,11 +47,13 @@ class MekanikController extends Controller
             'name' => 'required',
             'password' => 'required',
             'email' => 'required',
+            'username' => 'required|unique:users'
         ]);
 
         $data = new User(
             [
                 'name' => $request->get('name'),
+                'username' => $request->get('username'),
                 'password' => Hash::make($request->get('password')),
                 'email' => $request->get('email'),
                 'telepon' => $request->get('telepon'),

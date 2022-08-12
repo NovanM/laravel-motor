@@ -52,6 +52,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
+                                    <th>Username</th>
                                     <th>Email</th>
                                     <th>Role</th>
                                     <th>Telepon</th>
@@ -64,6 +65,7 @@
                                 <tr>
                                     <td>{{++$i}}</td>
                                     <td>{{$row->name}}</td>
+                                    <td>{{$row->username}}</td>
                                     <td>{{$row->email}}</td>
                                     <td>
                                             

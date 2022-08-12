@@ -36,7 +36,7 @@ class UserController extends Controller
             }
             
             
-          if ($user->role='user') {
+          if ($user->role=='user') {
             $pelanggan=Pelanggan::where('user_id',$user->id)->first();
           }
          

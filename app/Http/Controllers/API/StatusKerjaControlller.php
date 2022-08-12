@@ -6,6 +6,7 @@ use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 use App\StatusKerja;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StatusKerjaControlller extends Controller
 {
@@ -28,6 +29,7 @@ class StatusKerjaControlller extends Controller
     public function update(Request $request, $id)
     {
         $statuskerja = StatusKerja::where('transaksi_id',$id)->first();
+        $statuskerja->user_id = Auth::user()->id;
         $statuskerja->update($request->all());
 
         return ResponseFormatter::success($statuskerja, 'Transaksi di berbaruhi');

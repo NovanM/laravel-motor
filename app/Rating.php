@@ -17,7 +17,7 @@ class Rating extends Model
 
     public function transaksi()
     {
-        return $this->hasOne(layanan::class ,'id','transaksi_id');
+        return $this->hasOne(Transaksi::class ,'id','transaksi_id');
     }
     public function user()
     {

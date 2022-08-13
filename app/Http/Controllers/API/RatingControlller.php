@@ -20,7 +20,7 @@ class RatingControlller extends Controller
             $rating = Rating::where('transaksi_id', $id)->first();
         }else if ($id==0){
             // $rating = Rating::where('user_id', Auth::user()->id)->get();
-            $rating = Rating::all();
+            $rating = Rating::with('layanan');
         }
         return ResponseFormatter::success(
             $rating,

@@ -14,6 +14,11 @@ class Rating extends Model
     {
         return $this->hasOne(layanan::class ,'id','layanan_id');
     }
+
+    public function tranksasi()
+    {
+        return $this->hasOne(layanan::class ,'id','transaksi_id');
+    }
     public function user()
     {
         return $this->hasOne(User::class ,'id','user_id');

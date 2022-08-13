@@ -22,7 +22,7 @@ class StatusKerjaControlller extends Controller
 
        return ResponseFormatter::success(
         $statuskerja,
-        'Data List Layanan'
+        'Data List Status Kerja'
        );
     }
 
@@ -32,7 +32,7 @@ class StatusKerjaControlller extends Controller
         $statuskerja->user_id = Auth::user()->id;
         $statuskerja->update($request->all());
 
-        return ResponseFormatter::success($statuskerja, 'Transaksi di berbaruhi');
+        return ResponseFormatter::success($statuskerja, 'Status Kerja di perbaruhi');
     }
 
     

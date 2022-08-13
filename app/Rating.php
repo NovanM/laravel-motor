@@ -8,7 +8,7 @@ class Rating extends Model
 {
     //
     protected $fillable = [
-        'layanan_id', 'rating','user_id','komplain'
+        'layanan_id', 'rating','user_id','komplain','transaksi_id'
     ];
     public function layanan()
     {

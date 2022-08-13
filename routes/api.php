@@ -32,7 +32,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('transaction/{pelanggan}','API\TransaksiControlller@all');
     Route::post('transaction','API\TransaksiControlller@checkout');
     Route::post('transaction/{id}','API\TransaksiControlller@update');
-    Route::get('rating', 'API\RatingControlller@all');
+    Route::get('rating/{id}', 'API\RatingControlller@all');
     Route::post('rating', 'API\RatingControlller@create');
     Route::get('status-kerja/{id}','API\StatusKerjaControlller@all');    
     Route::post('status-kerja/{id}','API\StatusKerjaControlller@update');    

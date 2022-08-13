@@ -19,6 +19,12 @@ class Rating extends Model
     {
         return $this->hasOne(Transaksi::class ,'id','transaksi_id');
     }
+
+    
+    public function status()
+    {
+        return $this->hasOne(StatusKerja::class ,'transaksi_id','transaksi_id');
+    }
     public function user()
     {
         return $this->hasOne(User::class ,'id','user_id');

@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function(){
     Route::get('user', 'API\UserController@fetchUser');
     Route::post('user', 'API\UserController@updateProfile');
+    Route::post('reset', 'API\UserController@resetPassword');
     // Route::get('user', 'UserController@, 'fetch');
     Route::post('logout', 'API\UserController@logout');
     Route::get('transaction/{pelanggan}','API\TransaksiControlller@all');

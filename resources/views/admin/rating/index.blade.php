@@ -4,6 +4,12 @@
 
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
 <div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
@@ -40,7 +46,7 @@
                         <!-- <a href="{{route('layanan.create')}}" class="btn btn-success pull-right">Create</a> -->
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
-                   
+
                     <div class="card-body">
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
@@ -59,20 +65,54 @@
                                     <td>{{++$i}}</td>
                                     <td>{{$row->user->name}}</td>
                                     <td>{{$row->user->email}}</td>
+
                                     <td>{{$row->komplain}}</td>
-                                    <td>{{$row->rating}}</td>
+
                                     <td>
-                                        
-                                        <form class="form-inline" action="{{route('rating.destroy', $row ->id)}}" method="post" >
+                                        @if($row->rating == 1)
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        @elseif($row->rating == 2)                     
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        @elseif($row->rating == 3)                     
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                         @elseif($row->rating == 4)                     
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                        @elseif($row->rating == 5)                     
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        @endif
+                                    </td>
+                                    <td>
+
+                                        <form class="form-inline" action="{{route('rating.destroy', $row ->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-outline-danger"  type="submit">Delete</button> 
-                                            <a href="{{route('rating.show', $row ->id)}}" class="btn btn-warning ml-3 text-bold" >Detail</a>
+                                            <button class="btn btn-outline-danger" type="submit">Delete</button>
+                                            <a href="{{route('rating.show', $row ->id)}}" class="btn btn-warning ml-3 text-bold">Detail</a>
                                         </form>
-                                    
+
 
                                     </td>
-                                    
+
                                 </tr>
 
                                 @endforeach

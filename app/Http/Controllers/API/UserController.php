@@ -106,14 +106,27 @@ class UserController extends Controller
 
     {
         $user = User::with(['pelanggan'])->where('id', $request->user()->id)->first();
-        return ResponseFormatter::success([
-            'email'=>$user->email,
-            'name'=>$user->name,
-            'telepon'=>$user->telepon,
-            'alamat'=>$user->pelanggan->alamat,
-            'koordinator_lokasi'=>$user->pelanggan->koordinator_lokasi,
-            'pelanggan_id'=>$user->pelanggan->id,
-        ], "Data user Profile");
+        if ($user->pelanggan != null) {
+            return ResponseFormatter::success([
+                'email'=>$user->email,
+                'name'=>$user->name,
+                'telepon'=>$user->telepon,
+                'alamat'=>$user->pelanggan->alamat,
+                'koordinator_lokasi'=>$user->pelanggan->koordinator_lokasi,
+                'pelanggan_id'=>$user->pelanggan->id,
+            ], "Data user Profile");
+        }else{
+            return ResponseFormatter::success([
+                'email'=>$user->email,
+                'name'=>$user->name,
+                'telepon'=>$user->telepon,
+                'alamat'=>$user->pelanggan,
+                'koordinator_lokasi'=>$user->pelanggan,
+                'pelanggan_id'=>0,
+            ], "Data user Profile");
+        }
+        
+
     }
 
 

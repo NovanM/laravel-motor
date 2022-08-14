@@ -40,6 +40,8 @@ class RatingControlller extends Controller
             'komplain'=> $request->komplain,
             'transaksi_id'=>$statuskerja->transaksi_id,
         ]);
-        return ResponseFormatter::success($rating, 'Rating Created');
+
+        $newrating = Rating::where('transaksi_id', $rating->transaksi_id)->with(['transaksi','status.user'])->first();
+        return ResponseFormatter::success($newrating, 'Rating Created');
     }
 }

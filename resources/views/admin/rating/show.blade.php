@@ -1,8 +1,8 @@
 @extends('admin.layout.master')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-    
     .circle-image img {
 
         border: 6px solid #fff;
@@ -122,11 +122,22 @@
     }
 
 
+
     .rating-submit:hover {
 
         color: #fff;
     }
+
+    .checked {
+        color: orange;
+        width: 10px;
+        height: 5px;
+        
+    }
 </style>
+
+
+
 
 <div class="breadcrumbs">
     <div class="col-sm-4">
@@ -156,86 +167,116 @@
 
 
         <center>
-        <div class="row">
-            <div class="col-lg-12 ">
+            <div class="row">
+                <div class="col-lg-12 ">
 
-                <div class="card ">
-                    <div class="card-header">
-                        <strong>{{$pagename}}</strong>
-                    </div>
-                    <div class="card-body card-block ">
+                    <div class="card ">
+                        <div class="card-header">
+                            <strong>{{$pagename}}</strong>
+                        </div>
+                        <div class="card-body card-block ">
 
-                        @if($errors->any())
-                        <div class="alert alert-danger">
-                            <div class="list-group">
-                                @foreach($errors->all() as $error)
-                                <li class="list-group-item">
-                                    {{$error}}
-                                </li>
-                                @endforeach
+                            @if($errors->any())
+                            <div class="alert alert-danger">
+                                <div class="list-group">
+                                    @foreach($errors->all() as $error)
+                                    <li class="list-group-item">
+                                        {{$error}}
+                                    </li>
+                                    @endforeach
+                                </div>
                             </div>
+
+                            @endif
+
+
                         </div>
 
-                        @endif
-                
+                        <div class="container d-flex justify-content-center mt-5">
 
-                    </div>
+                            <div class="card text-center mb-5">
 
-                    <div class="container d-flex justify-content-center mt-5">
+                                <div class="circle-image">
+                                    <img src="{{asset('images/avatar/1.png')}}" width="50">
+                                </div>
 
-                        <div class="card text-center mb-5">
+                                <span class="dot"></span>
 
-                            <div class="circle-image">
-                                <img src="{{asset('images/avatar/1.png')}}" width="50">
-                            </div>
-
-                            <span class="dot"></span>
-
-                            <span class="name mb-1 fw-500">{{$data->user->name}}</span>
-                            <small class="text-black-50">Mekanik</small>
-                            <small class="text-black-50 font-weight-bold">{{$data->email}}</small>
+                                <span class="name mb-1 fw-500">{{$data->user->name}}</span>
+                                <small class="text-black-50">Mekanik</small>
+                                <small class="text-black-50 font-weight-bold">{{$data->email}}</small>
 
 
 
-                            <div class="location mt-4">
+                                <div class="location mt-4">
 
-                                <span><i class="fa fa-map-marker stop mt-2"></i> <small class="text-truncate ml-2">{{$data->komplain}}</small> </span>
+                                    <span><i class="fa fa-map-marker stop mt-2"></i> <small class="text-truncate ml-2">{{$data->komplain}}</small> </span>
 
-                            </div>
-
-
-                            <div class="rate bg-success py-3 text-white mt-3">
-
-                                <h6 class="mb-0">Rate Mekanik</h6>
-
-
-                                <div class="display-1"> {{$data->rating}}</div>
-
-
-                                <div class="buttons px-4 mt-0">
-                                    <a href="{{url('dashboard/rating')}}" class="btn btn-warning btn-block rating-submit">Kembali</a>
                                 </div>
 
 
+                                <div class="rate bg-success py-3 text-white mt-3">
+
+                                    <h6 class="mb-0">Rate Mekanik</h6>
+                                    
+                                    <div >
+                                        @if($data->rating == 1)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($data->rating == 2)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($data->rating == 3)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($data->rating == 4)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($data->rating == 5)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        @endif
+                                    </div>
+
+                                    <div class="buttons px-4 mt-0">
+                                        <a href="{{url('dashboard/rating')}}" class="btn btn-warning btn-block rating-submit">Kembali</a>
+                                    </div>
+
+                                    
+                                </div>
+
+
+
+
+
+
                             </div>
 
 
 
-
-
-
                         </div>
-
-
-
                     </div>
+
+
                 </div>
 
 
             </div>
-
-
-        </div>
         </center>
     </div>
     <!-- Button trigger modal -->

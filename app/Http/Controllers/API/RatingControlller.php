@@ -47,7 +47,7 @@ class RatingControlller extends Controller
             'rating'=> $request->rating,
             'user_id'=> Auth::user()->id,
             'komplain'=> $request->komplain,
-            'transaksi_id'=>$statuskerja->transaksi_id,
+            'transaksi_id'=>$request->transaksi_id,
         ]);
        }
 

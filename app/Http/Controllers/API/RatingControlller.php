@@ -33,6 +33,7 @@ class RatingControlller extends Controller
     public function create(Request $request)
     {
         $statuskerja = StatusKerja::where('transaksi_id', $request->transaksi_id)->first();
+       if ($statuskerja != null) {
         $rating = Rating::create([
             'layanan_id' => $statuskerja->layanan_id,
             'rating'=> $request->rating,
@@ -40,6 +41,15 @@ class RatingControlller extends Controller
             'komplain'=> $request->komplain,
             'transaksi_id'=>$statuskerja->transaksi_id,
         ]);
+       }else{
+        $rating = Rating::create([
+            'layanan_id' => 0,
+            'rating'=> $request->rating,
+            'user_id'=> $statuskerja->user_id,
+            'komplain'=> $request->komplain,
+            'transaksi_id'=>$statuskerja->transaksi_id,
+        ]);
+       }
 
         $newrating = Rating::where('transaksi_id', $rating->transaksi_id)->with(['transaksi','status.user'])->first();
         return ResponseFormatter::success($newrating, 'Rating Created');

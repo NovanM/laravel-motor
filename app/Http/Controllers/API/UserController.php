@@ -79,11 +79,12 @@ class UserController extends Controller
             Pelanggan::create([
                 'user_id'=>$user->id,
             ]);
+            $userNew = User::with('pelanggan')->where('username',$request->username)->first();
             return ResponseFormatter::success(
                 [
                     'access_token'=>$tokenResult,
                     'token_type'=>'Bearer',
-                    'user'=>$user
+                    'user'=>$userNew
                 ],'Registered   '
             );
         } catch(Exception $e){

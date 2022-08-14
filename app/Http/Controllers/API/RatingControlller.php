@@ -45,7 +45,7 @@ class RatingControlller extends Controller
         $rating = Rating::create([
             'layanan_id' => 0,
             'rating'=> $request->rating,
-            'user_id'=> $statuskerja->user_id,
+            'user_id'=> Auth::user()->id,
             'komplain'=> $request->komplain,
             'transaksi_id'=>$statuskerja->transaksi_id,
         ]);

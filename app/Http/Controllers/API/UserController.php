@@ -108,7 +108,7 @@ class UserController extends Controller
 
     public function resetPassword(Request $request)
     {
-        $user = User::where('email');
+        $user = User::where('email', $request->email)->first();
         if ($request->name == $user->name && $request->email == $user->email) {
             $oldPassword = $request->password;
             if (Hash::check($oldPassword,$user->password)) {

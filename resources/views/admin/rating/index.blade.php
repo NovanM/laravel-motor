@@ -52,7 +52,9 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Mekanik</th>
+                                    <th>ID transaksi</th>
+                                    <th>Nama Layanan</th>
+                                    <th>Nama </th>
                                     <th>Email</th>
                                     <th>Komplain</th>
                                     <th>Rating</th>
@@ -63,6 +65,14 @@
                                 @foreach($allRating as $i => $row)
                                 <tr>
                                     <td>{{++$i}}</td>
+                                    <td>00{{$row->transaksi_id}}</td>
+                                    <td>@empty($row->transaksi->layanan_id)
+                                        Pembelian {{$row->transaksi->nama_layanan}}
+                                        @else
+                                        Service {{$row->transaksi->nama_layanan}}
+                                        @endempty
+
+                                    </td>
                                     <td>{{$row->user->name}}</td>
                                     <td>{{$row->user->email}}</td>
 
@@ -70,35 +80,35 @@
 
                                     <td>
                                         @if($row->rating == 1)
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                        @elseif($row->rating == 2)                     
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                        @elseif($row->rating == 3)                     
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                         @elseif($row->rating == 4)                     
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                        @elseif($row->rating == 5)                     
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($row->rating == 2)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($row->rating == 3)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($row->rating == 4)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($row->rating == 5)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
                                         @endif
                                     </td>
                                     <td>

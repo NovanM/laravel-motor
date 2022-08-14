@@ -16,7 +16,7 @@ class RatingController extends Controller
     {
         //
         $pagename = 'Data Rating';
-        $allRating = Rating::all();
+        $allRating = Rating::with('transaksi')->get();
         return view('admin.rating.index', compact('pagename', 'allRating'));
     }
 

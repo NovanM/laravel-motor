@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Console\Kernel;
+use App\Rating;
+use App\StatusKerja;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -125,7 +128,10 @@ class MekanikController extends Controller
     {
         //
         $data = User::find($id);
-
+        $kerja = StatusKerja::where('user_id',$data->id);
+        $rating = Rating::where('user_id',$data->id);
+        $kerja->delete();
+        $rating->delete();
         $data->delete();
         return redirect('dashboard/mekanik')->with('success', 'Mekanik User Deleted');
     }

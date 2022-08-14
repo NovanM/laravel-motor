@@ -30,7 +30,7 @@ class UserController extends Controller
                     
                 ],'Authentication Failed',500);
             }
-            $user = User::where('username',$request->username)->first();
+            $user = User::with('pelanggan')->where('username',$request->username)->first();
             if(!Hash::check($request->password,$user->password)){
                 throw new \Exception('Invalid Credentials');
             }

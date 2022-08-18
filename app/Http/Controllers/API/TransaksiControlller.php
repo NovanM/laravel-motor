@@ -24,9 +24,9 @@ class TransaksiControlller extends Controller
        
    
         if ($pelanggan) {
-            $transaction = Transaksi::with(['pelanggan','user'])->where('pelanggan_id', $pelanggan)->get();
+            $transaction = Transaksi::with(['pelanggan','user'])->where('pelanggan_id', $pelanggan)->orderBy('created_at','desc')->get();
         }else if($pelanggan == 0){
-            $transaction = Transaksi::with(['pelanggan','user'])->whereIn('status',['SUCCESS','success'])->get();
+            $transaction = Transaksi::with(['pelanggan','user'])->whereIn('status',['SUCCESS','success'])->orderBy('created_at','desc')->get();
         }
 
         return ResponseFormatter::success(

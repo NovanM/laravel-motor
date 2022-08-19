@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pelanggan;
+use App\StatusKerja;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -93,10 +94,11 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
-        $user->delete();
-
+        $kerja = StatusKerja::where('user_id',$user->id);
         $pelanggan = Pelanggan::where('user_id',$user->id);
         $pelanggan->delete();
+        $user->delete();
+        $kerja->delete();
 
         return redirect()->route('users.index')->with('success', 'User Deleted');
     }

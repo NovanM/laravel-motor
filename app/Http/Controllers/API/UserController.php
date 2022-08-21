@@ -111,18 +111,10 @@ class UserController extends Controller
         try {
             $user = User::where('email', $request->email)->first();
             if ($request->name == $user->name && $request->email == $user->email) {
-                $oldPassword = $request->password;
-                if (Hash::check($oldPassword,$user->password)) {
                     $newPassword = Hash::make($request->new_password);
                     $user->password = $newPassword;
                     $user->save();
                     return ResponseFormatter::success($user, 'Password Changed');
-                } else {
-                    return ResponseFormatter::error([
-                        'data' =>  'Please Check Correct account data',
-    
-                    ], 'Password Change Failed');
-                }
             } else {
                 return ResponseFormatter::error([
                     'data' =>  'Please Check Correct account data',

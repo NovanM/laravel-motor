@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pelanggan;
+use App\Rating;
 use App\StatusKerja;
 use App\Transaksi;
 use App\User;
@@ -95,13 +96,14 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
-        $kerja = StatusKerja::where('user_id',$user->id);
         $pelanggan = Pelanggan::where('user_id',$user->id);
         $transaksi = Transaksi::where('user_id',$user->id);
-
+        $rating = Rating::where('tranksaksi_id',$transaksi->id);
+        $kerja = StatusKerja::where('tranksaksi_id',$transaksi->id);
         $pelanggan->delete();
         $user->delete();
         $kerja->delete();
+        $rating->delete();
         $transaksi->delete();
         return redirect()->route('users.index')->with('success', 'User Deleted');
     }

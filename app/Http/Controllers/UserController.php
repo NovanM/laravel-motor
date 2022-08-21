@@ -98,8 +98,8 @@ class UserController extends Controller
         $user = User::find($id);
         $pelanggan = Pelanggan::where('user_id',$user->id);
         $transaksi = Transaksi::where('user_id',$user->id);
-        $rating = Rating::where('tranksaksi_id',$transaksi->id);
-        $kerja = StatusKerja::where('tranksaksi_id',$transaksi->id);
+        $rating = Rating::where('tranksaksi_id',$transaksi->first()->id);
+        $kerja = StatusKerja::where('tranksaksi_id',$transaksi->first()->id);
         $pelanggan->delete();
         $user->delete();
         $kerja->delete();

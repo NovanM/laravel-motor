@@ -106,11 +106,13 @@ class MekanikController extends Controller
 
         
         $data = User::find($id);
- 
-        $password_hash = Hash::make($request->password);
+        
+        if ($request->get('password')!= ''|| $request->get('password')!= null) {
+            $password_hash = Hash::make($request->password);
+            $data->password = $password_hash;
+        }
 
         $data->name = $request->get('name');
-        $data->password = $password_hash;
         $data->email = $request->get('email');
         $data->telepon = $request->get('telepon');
 

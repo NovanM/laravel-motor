@@ -29,7 +29,7 @@ class SupplierController extends Controller
     {
         //
         $supplier = Supplier::all();
-        $pagename = 'Form Input create Supplier';
+        $pagename = 'Form Tambah Data Supplier';
         return view('admin.supplier.create', compact('pagename', 'supplier'));
     }
 
@@ -46,7 +46,7 @@ class SupplierController extends Controller
             'name' => 'required',
             'telepon' => 'required',
             'nama_sparepart' => 'required',
-            'stok'=> "required",
+            
         ]);
       
         $data = new Supplier(
@@ -54,9 +54,9 @@ class SupplierController extends Controller
                 'nama' => $request->get('name'),
                 'telepon' => $request->telepon,
                 'alamat' => $request->get('alamat'),
-                'tanggal_masuk' => $request->get('tanggal_masuk'),
+            
                 'nama_sparepart' => $request->get('nama_sparepart'),
-                'stok'=> $request->get('stok'),
+            
             ]
         );
 
@@ -84,7 +84,7 @@ class SupplierController extends Controller
     public function edit($id)
     {
         //
-        $pagename = 'Update Data Supplier';
+        $pagename = 'Edit Data Supplier';
         $data = Supplier::find($id);
         return view('admin.supplier.edit', compact('data', 'pagename',));
     }

@@ -54,21 +54,25 @@
              
                             
                             <div class="row form-group">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Sparepart</label></div>
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Edit Nama Supplier</label></div>
                                 <div class="col-12 col-md-9">
-                                    <select class="form-control"  name="nama" value="{{$data->nama}}" id="">
+                                    <select class="form-control"  name="nama_supplier" value="{{$data->supplier->nama}}" id="">
                                        
-                                        
+                                        @foreach($dataSupplier as $supplier)                                        
                                             <option   
+                                            @if($supplier->nama == $data->supplier->nama)
+                                            value="{{$supplier->nama}}"
                                                         selected
-                                                   >
-                                            {{$data->supplier->nama_sparepart}}
+                                                   @endif>
+                                            {{$supplier->nama}}
                                             </option>
-                                        
+                                        @endforeach
                                         
                                     </select>    
                                 </div>
                             </div>
+
+
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">kode</label></div>
@@ -76,8 +80,18 @@
                             </div>
 
                             <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->nama}}" name="nama" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                            </div>
+
+                            <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Harga</label></div>
                                 <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->harga}}" name="harga" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Harga Jual</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->harga_jual}}" name="harga_jual" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Stok</label></div>
@@ -90,7 +104,7 @@
                                     <input type="file" id="file" name="images" value="{{$data->images}}" class="form-control-file" value="{{ old('images') }}">
                                 </div>
 
-                                @error('file_disposisi')
+                                @error('images')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

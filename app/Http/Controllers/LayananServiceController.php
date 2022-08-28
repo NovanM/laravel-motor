@@ -30,7 +30,7 @@ class LayananServiceController extends Controller
     {
         //
         $data = LayananService::all();
-        $pagename = 'Form Input Create Layanan';
+        $pagename = 'Form Tambah Data Layanan';
 
         return view('admin.layanan.create', compact('pagename', 'data'));
     }
@@ -82,7 +82,7 @@ class LayananServiceController extends Controller
     public function edit($id)
     {
         //
-        $pagename = 'Update Data Layanan Service';
+        $pagename = 'Edit Data Layanan Service';
         $data = LayananService::find($id);
         return view('admin.layanan.edit', compact('data', 'pagename',));
     }

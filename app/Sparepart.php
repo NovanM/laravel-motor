@@ -9,7 +9,7 @@ class Sparepart extends Model
     //
     protected $fillable = [
         'suplier_id', 'kode', 'nama','nama_sparepart',
-        'stok','harga','images'
+        'stok','harga','images','harga_jual'
     ];
 
     public function supplier()

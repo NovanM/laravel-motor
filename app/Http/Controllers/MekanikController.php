@@ -22,6 +22,9 @@ class MekanikController extends Controller
         $pagename = 'Data Mekanik';
         $i = 0;
         $allUsers = User::all()->where('role', 'mekanik');
+      
+      
+        
         return view('admin.mekanik.index', compact('pagename', 'allUsers', 'i'));
     }
 
@@ -104,10 +107,10 @@ class MekanikController extends Controller
     {
         //
 
-        
+
         $data = User::find($id);
-        
-        if ($request->get('password')!= ''|| $request->get('password')!= null) {
+
+        if ($request->get('password') != '' || $request->get('password') != null) {
             $password_hash = Hash::make($request->password);
             $data->password = $password_hash;
         }
@@ -130,11 +133,28 @@ class MekanikController extends Controller
     {
         //
         $data = User::find($id);
-        $kerja = StatusKerja::where('user_id',$data->id);
-        $rating = Rating::where('user_id',$data->id);
+        $kerja = StatusKerja::where('user_id', $data->id);
+        $rating = Rating::where('user_id', $data->id);
         $kerja->delete();
         $rating->delete();
         $data->delete();
         return redirect('dashboard/mekanik')->with('success', 'Mekanik User Deleted');
+    }
+
+
+    public function deactivate($id)
+    {
+        //
+        $data = User::findOrFail($id);
+
+        if ($data && $data->status == 'activate') {
+            $data->status = 'deactivate';
+            $data->save();
+        } else if ($data && $data->status == 'deactivate') {
+            $data->status = 'activate';
+            $data->save();
+        }
+        
+        return redirect('dashboard/mekanik')->with('success', 'Mekanik DIedit');
     }
 }

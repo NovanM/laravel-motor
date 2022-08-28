@@ -20,7 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
-        'role','telepon','username',
+        'role','telepon','username','status'
     ];
 
     /**
@@ -51,6 +51,10 @@ class User extends Authenticatable
     public function pelanggan()
     {
         return $this->hasOne(Pelanggan::class ,'user_id','id');
+    }
+    public function rating()
+    {
+        return $this->hasMany(Rating::class ,'user_id','id');
     }
 }
 

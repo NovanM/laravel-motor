@@ -39,7 +39,7 @@
                     </div>
                     @endif
                     <div class="card-header">
-                        <a href="{{route('supplier.create')}}" class="btn btn-success pull-right">Create</a>
+                        <a href="{{route('supplier.create')}}" class="btn btn-success pull-right">Tambah</a>
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
                    
@@ -52,7 +52,7 @@
                                     <th>Telepon</th>
                                    
                                     <th>Alamat</th>
-                                    <th>Tanggal Masuk</th>
+                              
                                     <th>Nama Sparepart</th>
                                     <th>Action</th>
                                    
@@ -65,7 +65,7 @@
                                     <td>{{$row ->nama}}</td>
                                     <td>{{$row ->telepon}}</td>
                                     <td>{{$row ->alamat}}</td>
-                                    <td>{{$row ->tanggal_masuk}}</td>
+                            
                                     <td>{{$row ->nama_sparepart}}</td>
                                     <td>
                                         

@@ -40,7 +40,13 @@ class UserController extends Controller
 
             if ($user->role == 'user') {
                 $pelanggan = Pelanggan::where('user_id', $user->id)->first();
+            }else if ($user->role=='mekanik'&& $user->status=='deactivate') {
+                return ResponseFormatter::error([
+                    'message' => 'Something Wrong',
+                    'error' => 'Account Non Aktif'
+                ], 'Authenticate Failed', 500);
             }
+
 
             $tokenResult = $user->createToken('authToken')->plainTextToken;
             return ResponseFormatter::success(

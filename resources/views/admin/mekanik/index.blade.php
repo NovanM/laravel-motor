@@ -3,7 +3,11 @@
 @section('content')
 
 
-
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
 
 
 
@@ -42,7 +46,7 @@
                     </div>
                     @endif
                     <div class="card-header">
-                        <a href="{{route('mekanik.create')}}" class="btn btn-success pull-right">Create</a>
+                        <a href="{{route('mekanik.create')}}" class="btn btn-success pull-right">Tambah</a>
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
                    
@@ -55,12 +59,15 @@
                                     <th>Username</th>
                                     <th>Email</th>
                                     <th>Role</th>
+                                    <th>Status</th>
                                     <th>Telepon</th>
+                                    <th>Rating Mekanik</th>
                                     <th>Action</th>
                                    
                                 </tr>
                             </thead>
                             <tbody>
+                              
                                 @foreach($allUsers as $row)
                                 <tr>
                                     <td>{{++$i}}</td>
@@ -72,13 +79,73 @@
                                     <label class ="badge badge-success"> {{$row->role}}</label>
                                                                   
                                     </td>
+                                    <td>
+                                    @if($row->status=='activate')         
+                                    <label class ="badge badge-success"> Aktif</label>
+                                    @else
+                                    <label class ="badge badge-danger">Tidak Aktif</label>
+                                    @endif
+                                    </td>
                                     <td>{{$row ->telepon}}</td>
+                                    @if($row->rating == '[]')
+                                    <td>-</td>
+                                    @else
+                                    <td>
+                                    <?php
+                                        $total = 0;
+                                        foreach ($row->rating as $value) {
+                                            $total += $value->rating;    
+                                        }
+                                        $total = round($total/count($row->rating))
+                                    ?>
+                                     <div >
+                                       
+                                        @if($total == 1 )
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($total == 2)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($total == 3)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($total == 4)
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        @elseif($total == 5 )
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        @endif
+                                    </div>
+                                    </td>
+                                    @endif
+
+
                                     <td>
                                         
-                                        <form class="form-inline" action="{{route('mekanik.destroy', $row ->id)}}" method="post" >
+                                        <form class="form-inline" action="{{route('mekanik-deactivate', $row ->id)}}" method="post" >
                                             @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-outline-danger"  type="submit">Delete</button> 
+                                            @method('PATCH')
+                                            @if($row->status=='activate')
+                                            <button class="btn btn-outline-danger"  type="submit">Tidak Aktif</button> 
+                                            @else
+                                            <button class="btn btn-outline-success"  type="submit">Aktif</button> 
+                                            @endif
                                             <a href="{{route('mekanik.edit', $row ->id)}}" class="btn btn-outline-primary ml-3" >Edit</a>
                                         </form>
                                     

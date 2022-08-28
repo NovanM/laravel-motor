@@ -45,7 +45,15 @@
 
                     <div class="card-body">
                         <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Cetak Data</button>
-
+                        <div class="col-auto ">
+                            <a href="{{url('/dashboard/transaksi')}}"><button class="btn-warning btn "  id=""> Semua Laporan </button></a>
+                        </div>
+                        <div class="col-auto ">
+                            <a href="{{route('transaksi-layanan')}}"><button class="btn-warning btn "  id=""> Laporan Layanan</button></a>
+                        </div>
+                        <div class="col-auto ">
+                            <a href="{{route('transaksi-sparepart')}}"><button class="btn-warning btn "  id=""> Laporan Sparepart</button></a>
+                        </div>
 
 
                         <form action="{{url('dashboard/transaksi/pesanan')}}" method="get">
@@ -71,6 +79,7 @@
                                 </div>
                             </div>
                         </form>
+                        
                         @include('admin.transaksi.table')
                         <center>
                             <tr>

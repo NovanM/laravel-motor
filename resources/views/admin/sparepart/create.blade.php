@@ -57,13 +57,13 @@
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Sparepart</label></div>
 
                                 <div class="col-12 col-md-9">
-                                    <select class="form-control" name="nama" id="">
-                                        <option value="" label="Pilih Sparepart"></option>
-                                        @foreach($dataSupplier as $sparepart)
-                                        {{$sparepart}}
+                                    <select class="form-control" name="nama_supplier" id="">
+                                        <option value="" label="Pilih Supplier"></option>
+                                        @foreach($dataSupplier as $supplier)
+                                        
                                             <option value="
-                                            {{$sparepart->nama_sparepart}}">
-                                            {{$sparepart->nama_sparepart}}
+                                            {{$supplier->nama}}">
+                                            {{$supplier->nama}}
                                         </option>
                                         
                                         @endforeach
@@ -75,11 +75,25 @@
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">kode</label></div>
                                 <div class="col-12 col-md-9"><input type="text" id="text-input" name="kode" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
-
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="nama" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                            </div>
+                          
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Harga</label></div>
                                 <div class="col-12 col-md-9"><input type="text" id="text-input" name="harga" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
+                          
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Harga Jual</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="harga_jual" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Stok</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="stok" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                            </div>
+                            
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="file-input" class=" form-control-label">File Gambar</label></div>

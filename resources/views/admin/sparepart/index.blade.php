@@ -37,7 +37,7 @@
                     </div>
                     @endif
                     <div class="card-header">
-                        <a href="{{route('sparepart.create')}}" class="btn btn-success pull-right">Create</a>
+                        <a href="{{route('sparepart.create')}}" class="btn btn-success pull-right">Tambah</a>
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
                    
@@ -51,6 +51,7 @@
                                     <th>Stok</th>
                                     <th>Gambar </th>
                                     <th>Harga</th>
+                                    <th>Harga Jual</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -65,6 +66,7 @@
                                     <td>{{$row->stok}}</td>
                                     <td><img src="{{url('images/'.$row->images)}}" alt="" width="50" height="50"></td>
                                     <td>@currency($row->harga)</td>
+                                    <td>@currency($row->harga_jual)</td>
                                     <td>
                                         
                                         <form class="form-inline" action="{{route('sparepart.destroy', $row ->id)}}" method="post" >

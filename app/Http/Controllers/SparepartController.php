@@ -31,8 +31,8 @@ class SparepartController extends Controller
     {
         //
         $data = Sparepart::all();
-        $dataSupplier = Supplier::select('nama_sparepart','stok')->get();
-        $pagename = 'Form input sparepart';
+        $dataSupplier = Supplier::select('nama_sparepart','nama')->get();
+        $pagename = 'Form Tambah Data Sparepart';
         return view('admin.sparepart.create', compact('pagename','data', 'dataSupplier'));
     }
 
@@ -45,20 +45,23 @@ class SparepartController extends Controller
     public function store(Request $request)
     {
         //
+       
         $request->validate([
             'kode' => 'required|numeric|unique:spareparts',
             'nama' => 'required',
             'images' => 'required',
             'harga' => 'required|numeric',
         ]);
-        $dataSupplier = Supplier::where('nama_sparepart', $request->nama)->get()->first();
+        $dataSupplier = Supplier::where('nama', $request->nama_supplier)->first();
+   
         $data = new Sparepart(
             [
                 'kode' => $request->get('kode'),
-                'nama' => $request->nama,
-                'stok' => $dataSupplier->stok,
+                'nama' => $request->get('nama'),
+                'stok' => $request->get('stok'),
                 'harga' => $request->get('harga'),
-                'suplier_id' => $dataSupplier->id,
+                'harga_jual'=>$request->get('harga_jual'),
+                'suplier_id'=> $dataSupplier->id,
             ]
         );
 
@@ -92,11 +95,11 @@ class SparepartController extends Controller
     public function edit($id)
     {
         //
-        $pagename = 'Update Data Sparepart';
+        $pagename = 'Edit Data Sparepart';
         $data = Sparepart::find($id);
        
-    
-        return view('admin.sparepart.edit', compact('data', 'pagename'));
+        $dataSupplier = Supplier::select('nama_sparepart','nama')->get();
+        return view('admin.sparepart.edit', compact('data', 'pagename','dataSupplier'));
     }
 
     /**
@@ -114,13 +117,16 @@ class SparepartController extends Controller
             'nama' => 'required',
             'harga' => 'required|numeric',
         ]);
-    
+        $dataSupplier = Supplier::where('nama', $request->nama_supplier)->first();
         $data = Sparepart::find($id);
 
         $data->nama = $request->get('nama');
         $data->kode = $request->get('kode');
         $data->harga = $request->get('harga');
         $data->stok = $request->get('stok');
+        $data->harga_jual = $request->get('harga_jual');
+        $data->suplier_id = $dataSupplier->id;
+        
 
         if($request->hasFile('images')) {
             $request->file('images')->move('images/', $request->file('images')->getClientOriginalName());

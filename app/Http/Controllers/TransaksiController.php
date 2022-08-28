@@ -51,6 +51,32 @@ class TransaksiController extends Controller
             redirect()->back();
         }
     }
+
+    public function byLayanan(){
+        $pagename = 'Data Laporan Keuangan';
+        $allTransaksi = Transaksi::where('layanan_id','!=',null)->get();
+        $total = 0;
+        foreach ($allTransaksi  as $value) {
+            if ($value->status == 'success' || $value->status == 'SUCCESS') {
+                $total += $value->total;
+            }
+        }
+
+        return view('admin.transaksi.index', compact('pagename', 'allTransaksi','total', ));
+    }
+
+    public function bySparepart(){
+        $pagename = 'Data Laporan Keuangan';
+        $allTransaksi = Transaksi::where('sparepart_id','!=',null)->get();
+        $total = 0;
+        foreach ($allTransaksi  as $value) {
+            if ($value->status == 'success' || $value->status == 'SUCCESS') {
+                $total += $value->total;
+            }
+        }
+        
+        return view('admin.transaksi.index', compact('pagename', 'allTransaksi','total', ));
+    }
     public function exportExcel(Request $request)
     {   
        

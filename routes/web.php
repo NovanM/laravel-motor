@@ -28,6 +28,7 @@ Route::prefix('dashboard')
     ->group(function(){
         Route::get('/', 'DashboardController@index')->name('dashboard');
         Route::resource('users', 'UserController');
+        Route::patch('mekanik/{id}', 'MekanikController@deactivate')->name('mekanik-deactivate');
         Route::resource('mekanik', 'MekanikController');
         Route::resource('supplier', 'SupplierController');
         Route::resource('sparepart', 'SparepartController');
@@ -37,6 +38,8 @@ Route::prefix('dashboard')
         Route::get('transaksi', 'TransaksiController@index');
         Route::get('transaksi/pesanan', 'TransaksiController@periodic')->name('periode');
         Route::get('transaksi/download', 'TransaksiController@exportExcel')->name('download-transaksi');
+        Route::get('transaksi/layanan', 'TransaksiController@byLayanan')->name('transaksi-layanan');
+        Route::get('transaksi/sparepart', 'TransaksiController@bySparepart')->name('transaksi-sparepart');
     });
 
 // Route::get('/home', 'HomeController@index')->name('home');

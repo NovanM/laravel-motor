@@ -24,26 +24,26 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::middleware('auth:sanctum')->group(function(){
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', 'API\UserController@fetchUser');
     Route::post('user', 'API\UserController@updateProfile');
-    
+
     // Route::get('user', 'UserController@, 'fetch');
     Route::post('logout', 'API\UserController@logout');
-    Route::get('transaction/{pelanggan}','API\TransaksiControlller@all');
-    Route::post('transaction','API\TransaksiControlller@checkout');
-    Route::post('transaction/{id}','API\TransaksiControlller@update');
+    Route::get('transaction/{pelanggan}', 'API\TransaksiControlller@all');
+    Route::post('transaction', 'API\TransaksiControlller@checkout');
+    Route::post('transaction/{id}', 'API\TransaksiControlller@update');
     Route::get('rating/{id}', 'API\RatingControlller@all');
     Route::post('rating', 'API\RatingControlller@create');
-    Route::get('status-kerja/{id}','API\StatusKerjaControlller@all');    
-    Route::post('status-kerja/{id}','API\StatusKerjaControlller@update');    
+    Route::get('status-kerja/{id}', 'API\StatusKerjaControlller@all');
+    Route::post('status-kerja/{id}', 'API\StatusKerjaControlller@update');
+    Route::get('layanan', 'API\LayananServiceController@all');
+    Route::get('sparepart', 'API\SparePartControlller@all');
 });
 Route::post('reset', 'API\UserController@resetPassword');
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 
-Route::get('layanan','API\LayananServiceController@all');
-Route::get('sparepart','API\SparePartControlller@all');
 
 
 Route::post('midtrans/callback', 'API\TransaksiControlller@callback');

@@ -98,7 +98,7 @@ class SparepartController extends Controller
         $pagename = 'Edit Data Sparepart';
         $data = Sparepart::find($id);
        
-        $dataSupplier = Supplier::select('nama_sparepart','nama')->get();
+        $dataSupplier = Supplier::select('nama')->get();
         return view('admin.sparepart.edit', compact('data', 'pagename','dataSupplier'));
     }
 

@@ -54,7 +54,7 @@
 
                             
                             <div class="row form-group">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Sparepart</label></div>
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Supplier</label></div>
 
                                 <div class="col-12 col-md-9">
                                     <select class="form-control" name="nama_supplier" id="">
@@ -76,7 +76,7 @@
                                 <div class="col-12 col-md-9"><input type="text" id="text-input" name="kode" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama</label></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Sparepart</label></div>
                                 <div class="col-12 col-md-9"><input type="text" id="text-input" name="nama" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
                           

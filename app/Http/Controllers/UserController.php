@@ -95,19 +95,19 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        $user = User::find($id);
-        $pelanggan = Pelanggan::where('user_id',$user->id);
-        $transaksi = Transaksi::where('user_id',$user->id);
-        foreach ($transaksi->get() as $value) {
-            $rating = Rating::where('transaksi_id',$value->id);
-            $kerja = StatusKerja::where('transaksi_id',$value->id);
-            $kerja->delete();
-            $rating->delete();
-        }
-        $pelanggan->delete();
-        $user->delete();
+        // $user = User::find($id);
+        // $pelanggan = Pelanggan::where('user_id',$user->id);
+        // $transaksi = Transaksi::where('user_id',$user->id);
+        // foreach ($transaksi->get() as $value) {
+        //     $rating = Rating::where('transaksi_id',$value->id);
+        //     $kerja = StatusKerja::where('transaksi_id',$value->id);
+        //     $kerja->delete();
+        //     $rating->delete();
+        // }
+        // $pelanggan->delete();
+        // $user->delete();
         
-        $transaksi->delete();
+        // $transaksi->delete();
         return redirect()->route('users.index')->with('success', 'User Deleted');
     }
 }

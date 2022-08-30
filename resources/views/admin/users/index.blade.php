@@ -52,7 +52,7 @@
                                     <th>Telepon</th>
                                     <th>Role</th>
                                     <th>Alamat</th>
-                                    <th>Action</th>
+                                    <!-- <th>Action</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,13 +71,13 @@
                                     </td>
                                     <td>{{$row->alamat}}</td>
                                     <!-- <td><a href="{{route('users.edit', $row ->id)}}" class="btn btn-outline-primary ">Edit</a></td> -->
-                                    <td>
+                                    <!-- <td>
                                         <form action="{{route('users.destroy', $row->user_id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-outline-danger" type="submit">Delete</button>
                                         </form>
-                                    </td>
+                                    </td> -->
                                 </tr>
 
                                 @endforeach

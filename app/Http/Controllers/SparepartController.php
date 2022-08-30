@@ -71,7 +71,7 @@ class SparepartController extends Controller
         }
 
         $data->save();
-        return redirect('dashboard/sparepart')->with('success', 'Sparepart Created');
+        return redirect('dashboard/sparepart')->with('success', 'Sparepart Ditambahkan');
         
     }
 
@@ -134,7 +134,7 @@ class SparepartController extends Controller
         }
 
         $data->update();
-        return redirect('dashboard/sparepart')->with('success', 'Sparepart Updated');
+        return redirect('dashboard/sparepart')->with('success', 'Sparepart Diperbaruhi');
     }
 
     /**
@@ -148,6 +148,6 @@ class SparepartController extends Controller
         //
         $data = Sparepart::find($id);
         $data->delete();
-        return redirect('dashboard/sparepart')->with('success', 'Sparepart Deleted');
+        return redirect('dashboard/sparepart')->with('success', 'Sparepart Dihapus');
     }
 }

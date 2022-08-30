@@ -38,7 +38,7 @@
                     </div>
                     @endif
                     <div class="card-header">
-                        <a href="{{route('layanan.create')}}" class="btn btn-success pull-right">Create</a>
+                        <a href="{{route('layanan.create')}}" class="btn btn-success pull-right">Tambah</a>
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
                    
@@ -50,7 +50,7 @@
                                     <th>Jenis Layanan</th>
                                     <th>Keterangan</th>
                                     <th>Harga</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                    
                                 </tr>
                             </thead>
@@ -66,7 +66,7 @@
                                         <form class="form-inline" action="{{route('layanan.destroy', $row ->id)}}" method="post" >
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-outline-danger"  type="submit">Delete</button> 
+                                            <button class="btn btn-outline-danger"  type="submit">Hapus</button> 
                                             <a href="{{route('layanan.edit', $row ->id)}}" class="btn btn-outline-primary ml-3" >Edit</a>
                                         </form>
                                     

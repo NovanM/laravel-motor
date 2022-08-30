@@ -108,6 +108,6 @@ class UserController extends Controller
         // $user->delete();
         
         // $transaksi->delete();
-        return redirect()->route('users.index')->with('success', 'User Deleted');
+        return redirect()->route('users.index')->with('success', 'User Dihapus');
     }
 }

@@ -84,7 +84,7 @@ class RatingController extends Controller
         $data->komplain = $request->get('komplain');
        
         $data->save();
-        return redirect('dashboard/rating')->with('success', 'Rating Updated');
+        return redirect('dashboard/rating')->with('success', 'Rating Diperbaruhi');
     }
 
     /**
@@ -99,6 +99,6 @@ class RatingController extends Controller
         $data = Rating::find($id);
 
         $data->delete();
-        return redirect('dashboard/rating')->with('success', 'Mekanik User Deleted');
+        return redirect('dashboard/rating')->with('success', 'Mekanik User Dihapus');
     }
 }

@@ -62,7 +62,7 @@
                                     <th>Status</th>
                                     <th>Telepon</th>
                                     <th>Rating Mekanik</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                    
                                 </tr>
                             </thead>

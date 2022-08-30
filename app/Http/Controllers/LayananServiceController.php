@@ -59,7 +59,7 @@ class LayananServiceController extends Controller
         );
 
         $data->save();
-        return redirect('dashboard/layanan')->with('success', 'Layanan Service Created');
+        return redirect('dashboard/layanan')->with('success', 'Layanan Service Ditambahkan');
     }
 
     /**
@@ -105,7 +105,7 @@ class LayananServiceController extends Controller
 
 
         $data->save();
-        return redirect('dashboard/layanan')->with('success', 'Layanan Service Updated');
+        return redirect('dashboard/layanan')->with('success', 'Layanan Service Diperbaruhi');
     }
 
     /**
@@ -123,6 +123,6 @@ class LayananServiceController extends Controller
             $value->delete();
         }
         $data->delete();
-        return redirect('dashboard/layanan')->with('success', 'Layanan Service Deleted');
+        return redirect('dashboard/layanan')->with('success', 'Layanan Service Dihapus');
     }
 }

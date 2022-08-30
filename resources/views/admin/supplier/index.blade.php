@@ -51,7 +51,7 @@
                                     <th>Nama</th>
                                     <th>Telepon</th>
                                     <th>Alamat</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                    
                                 </tr>
                             </thead>
@@ -67,7 +67,7 @@
                                         <form class="form-inline" action="{{route('supplier.destroy', $row ->id)}}" method="post" >
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-outline-danger"  type="submit">Delete</button> 
+                                            <button class="btn btn-outline-danger"  type="submit">Hapus</button> 
                                             <a href="{{route('supplier.edit', $row ->id)}}" class="btn btn-outline-primary ml-3" >Edit</a>
                                         </form>
                                     

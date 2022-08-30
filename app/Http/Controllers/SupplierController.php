@@ -61,7 +61,7 @@ class SupplierController extends Controller
         );
 
         $data->save();
-        return redirect('dashboard/supplier')->with('success', 'Supplier Created');
+        return redirect('dashboard/supplier')->with('success', 'Supplier Ditambahkan');
     }
 
     /**
@@ -112,7 +112,7 @@ class SupplierController extends Controller
 
 
         $data->save();
-        return redirect('dashboard/supplier')->with('success', 'Supplier Updated');
+        return redirect('dashboard/supplier')->with('success', 'Supplier Diperbaruhi');
     }
 
     /**
@@ -127,6 +127,6 @@ class SupplierController extends Controller
         $data = Supplier::find($id);
 
         $data->delete();
-        return redirect('dashboard/supplier')->with('success', 'Supplier Deleted');
+        return redirect('dashboard/supplier')->with('success', 'Supplier Dihapus');
     }
 }

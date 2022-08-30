@@ -52,7 +52,7 @@
                                     <th>Gambar </th>
                                     <th>Harga</th>
                                     <th>Harga Jual</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,7 +72,7 @@
                                         <form class="form-inline" action="{{route('sparepart.destroy', $row ->id)}}" method="post" >
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-outline-danger"  type="submit">Delete</button> 
+                                            <button class="btn btn-outline-danger"  type="submit">Hapus</button> 
                                             <a href="{{route('sparepart.edit', $row ->id)}}" class="btn btn-outline-primary ml-3" >Edit</a>
                                         </form>
                                     

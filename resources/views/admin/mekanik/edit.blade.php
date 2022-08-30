@@ -54,12 +54,12 @@
                             @csrf
              
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama</label></div>
                                 <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->name}}" name="name" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email Address</label></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email</label></div>
                                 <div class="col-12 col-md-9"><input type="text" value="{{$data->email}}" id="text-input" name="email" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
 
@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Confirm Password</label></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Konfirmasi Password</label></div>
                                 <div class="col-12 col-md-9"><input type="password" id="text-input" name="password_confirmation" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                             </div>
                             <div class="row form-group">

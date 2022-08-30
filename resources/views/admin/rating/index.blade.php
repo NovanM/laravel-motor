@@ -56,9 +56,9 @@
                                     <th>Nama Layanan</th>
                                     <th>Nama </th>
                                     <th>Email</th>
-                                    <th>Komplain</th>
+                                    <th>Komentar</th>
                                     <th>Rating</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -116,7 +116,7 @@
                                         <form class="form-inline" action="{{route('rating.destroy', $row ->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-outline-danger" type="submit">Delete</button>
+                                            <button class="btn btn-outline-danger" type="submit">Hapus</button>
                                             <a href="{{route('rating.show', $row ->id)}}" class="btn btn-warning ml-3 text-bold">Detail</a>
                                         </form>
 

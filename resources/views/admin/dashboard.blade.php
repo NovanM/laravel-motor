@@ -158,7 +158,7 @@
                         <div class="stat-widget-one">
                             <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
                             <div class="stat-content dib">
-                                <div class="stat-text">Laporan Keuanggan</div>
+                                <div class="stat-text">Laporan Keuangan</div>
                                 <div class="stat-digit">@currency($laporan)</div>
                             </div>
                         </div>

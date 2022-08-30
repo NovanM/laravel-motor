@@ -37,7 +37,7 @@ class MekanikController extends Controller
     {
         //
         $mekanik = User::all();
-        $pagename = 'Form Input create Mekanik';
+        $pagename = 'Form Tambah Mekanik';
         return view('admin.mekanik.create', compact('pagename', 'mekanik'));
     }
 
@@ -68,7 +68,7 @@ class MekanikController extends Controller
         );
 
         $data->save();
-        return redirect('dashboard/mekanik')->with('success', 'Mekanik Created');
+        return redirect('dashboard/mekanik')->with('success', 'Mekanik Ditambahkan');
     }
 
     /**
@@ -91,7 +91,7 @@ class MekanikController extends Controller
     public function edit($id)
     {
         //
-        $pagename = 'Update Data mekanik';
+        $pagename = 'Edit Data mekanik';
         $data = User::find($id);
         return view('admin.mekanik.edit', compact('data', 'pagename',));
     }
@@ -120,7 +120,7 @@ class MekanikController extends Controller
         $data->telepon = $request->get('telepon');
 
         $data->save();
-        return redirect('dashboard/mekanik')->with('success', 'Mekanik Updated');
+        return redirect('dashboard/mekanik')->with('success', 'Mekanik Diperbaruhi');
     }
 
     /**
@@ -138,7 +138,7 @@ class MekanikController extends Controller
         $kerja->delete();
         $rating->delete();
         $data->delete();
-        return redirect('dashboard/mekanik')->with('success', 'Mekanik User Deleted');
+        return redirect('dashboard/mekanik')->with('success', 'Mekanik User Dihapus');
     }
 
 
@@ -155,6 +155,6 @@ class MekanikController extends Controller
             $data->save();
         }
         
-        return redirect('dashboard/mekanik')->with('success', 'Mekanik DIedit');
+        return redirect('dashboard/mekanik')->with('success', 'Status Mekanik Diperbaruhi');
     }
 }

@@ -45,7 +45,7 @@ class SupplierController extends Controller
         $request->validate([
             'name' => 'required',
             'telepon' => 'required',
-            'nama_sparepart' => 'required',
+          
             
         ]);
       
@@ -55,7 +55,7 @@ class SupplierController extends Controller
                 'telepon' => $request->telepon,
                 'alamat' => $request->get('alamat'),
             
-                'nama_sparepart' => $request->get('nama_sparepart'),
+              
             
             ]
         );
@@ -108,7 +108,7 @@ class SupplierController extends Controller
         $data->telepon  = $request->get('telepon');
         $data->alamat = $request->get('alamat');
         $data->tanggal_masuk = $request->get('tanggal_masuk');
-        $data->nama_sparepart = $request->get('nama_sparepart');
+        
 
 
         $data->save();

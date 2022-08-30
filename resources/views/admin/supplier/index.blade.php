@@ -50,10 +50,7 @@
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Telepon</th>
-                                   
                                     <th>Alamat</th>
-                              
-                                    <th>Nama Sparepart</th>
                                     <th>Action</th>
                                    
                                 </tr>
@@ -65,8 +62,6 @@
                                     <td>{{$row ->nama}}</td>
                                     <td>{{$row ->telepon}}</td>
                                     <td>{{$row ->alamat}}</td>
-                            
-                                    <td>{{$row ->nama_sparepart}}</td>
                                     <td>
                                         
                                         <form class="form-inline" action="{{route('supplier.destroy', $row ->id)}}" method="post" >

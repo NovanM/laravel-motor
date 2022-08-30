@@ -31,7 +31,7 @@ class SparepartController extends Controller
     {
         //
         $data = Sparepart::all();
-        $dataSupplier = Supplier::select('nama_sparepart','nama')->get();
+        $dataSupplier = Supplier::select('nama')->get();
         $pagename = 'Form Tambah Data Sparepart';
         return view('admin.sparepart.create', compact('pagename','data', 'dataSupplier'));
     }

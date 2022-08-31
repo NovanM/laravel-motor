@@ -41,7 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('sparepart', 'API\SparePartControlller@all');
 });
 Route::post('reset', 'API\UserController@resetPassword');
-Route::post('login', 'API\UserController@login');
+Route::post('login' , 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 
 

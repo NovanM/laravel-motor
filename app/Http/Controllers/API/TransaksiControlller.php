@@ -82,7 +82,7 @@ class TransaksiControlller extends Controller
         Config::$is3ds = config('services.midtrans.is3ds');
 
 
-        $transaction = Transaksi::with(['layanan', 'user', 'sparepart'])->find($transaction->id);
+        $transaction = Transaksi::with(['layanan', 'user.pelanggan', 'sparepart'])->find($transaction->id);
 
         $midtrans = [
             'transaction_details' => [

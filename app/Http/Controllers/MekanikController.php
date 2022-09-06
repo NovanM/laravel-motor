@@ -23,7 +23,7 @@ class MekanikController extends Controller
         $i = 0;
         $allUsers = User::all()->where('role', 'mekanik');
       
-      
+        
         
         return view('admin.mekanik.index', compact('pagename', 'allUsers', 'i'));
     }

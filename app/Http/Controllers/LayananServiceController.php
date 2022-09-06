@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\LayananService;
+use App\Sparepart;
 use App\StatusKerja;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,8 @@ class LayananServiceController extends Controller
         //
         $pagename = 'Data Layanan';
         $allLayanan = LayananService::all();
-        return view('admin.layanan.index', compact('pagename', 'allLayanan'));
+        $allSparepart = Sparepart::all();
+        return view('admin.layanan.index', compact('pagename', 'allLayanan', 'allSparepart'));
     }
 
     /**
@@ -31,8 +33,8 @@ class LayananServiceController extends Controller
         //
         $data = LayananService::all();
         $pagename = 'Form Tambah Data Layanan';
-
-        return view('admin.layanan.create', compact('pagename', 'data'));
+        $data_sparepart = Sparepart::all();
+        return view('admin.layanan.create', compact('pagename', 'data', 'data_sparepart'));
     }
 
     /**
@@ -47,16 +49,29 @@ class LayananServiceController extends Controller
         $request->validate([
             'jenis_layanan' => 'required',
             'harga' => 'required|numeric',
-            'keterangan' => 'required',
+            'sparepart_id' => 'required',
         ]);
+        $harga_Sparepart = Sparepart::whereIn('id', request()->get('sparepart_id'))->sum('harga');
 
         $data = new LayananService(
             [
                 'jenis_layanan' => $request->get('jenis_layanan'),
-                'keterangan' => $request->get('keterangan'),
-                'harga' => $request->get('harga'),
+                'sparepart_id' => implode(",", $request->get('sparepart_id')),
+                'harga' => $request->get('harga') + $harga_Sparepart,
             ]
         );
+        
+        $allSparepart = Sparepart::all();
+        $keterangan = [];
+        foreach ($allSparepart as $value) {
+            foreach (explode(",", $data->sparepart_id) as $key) {
+                if ($value->id == $key) {
+                    array_push($keterangan, $value->nama);
+                }
+            }
+        }
+        $stringarray = implode(', ', $keterangan);
+        $data->keterangan = $stringarray;
 
         $data->save();
         return redirect('dashboard/layanan')->with('success', 'Layanan Service Ditambahkan');

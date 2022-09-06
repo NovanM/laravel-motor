@@ -48,8 +48,8 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Jenis Layanan</th>
-                                    <th>Keterangan</th>
-                                    <th>Harga</th>
+                                    <th>Keterangan Include Sparepart</th>
+                                    <th>Harga Total</th>
                                     <th>Aksi</th>
                                    
                                 </tr>
@@ -59,7 +59,11 @@
                                 <tr>
                                     <td>{{++$i}}</td>
                                     <td>{{$row->jenis_layanan}}</td>
-                                    <td>{{$row->keterangan}}</td>
+
+                                    <td>
+                                    
+                                    {{$row->keterangan}}
+                                    </td>
                                     <td> @currency($row->harga)</td>
                                     <td>
                                         

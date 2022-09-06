@@ -53,7 +53,17 @@ class TransaksiControlller extends Controller
 
         if ($request->layanan_id != 0 || $request->layanan_id != '0') {
             $namaLayanan = LayananService::find($request->layanan_id);
-            
+            $allSparepart = Sparepart::all();
+            $keterangan = [];
+            foreach ($allSparepart as $value) {
+                foreach (explode(",", $namaLayanan->sparepart_id) as $key) {
+                    if ($value->id == $key) {
+                        array_push($keterangan, $value->harga);
+                    }
+                }
+            }
+            $stringarray = implode(', ', $keterangan);
+    
             $transaction = Transaksi::create([
                 'layanan_id' => $request->layanan_id,
                 'user_id' => $request->user()->id,
@@ -62,6 +72,8 @@ class TransaksiControlller extends Controller
                 'status' => $request->status,
                 'pelanggan_id' =>0,
                 'payment_url' => '',
+                'layanan_sparepart' => $namaLayanan->keterangan,
+                'layanan_harga_sparepart' => $stringarray,
             ]);
         } else {
             $namaLayanan = Sparepart::find($request->sparepart_id);

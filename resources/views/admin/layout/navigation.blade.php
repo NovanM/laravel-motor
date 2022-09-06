@@ -20,6 +20,7 @@
                     <a href="{{url('/dashboard/supplier')}}"> <i class="menu-icon fa fa-truck"></i>Supplier</a>
                     <a href="{{url('/dashboard/sparepart')}}"> <i class="menu-icon fa fa-motorcycle"></i>Sparepart</a>
                     <a href="{{url('/dashboard/layanan')}}"> <i class="menu-icon fa fa-paper-plane"></i>Layanan</a>
+                    <a href="{{url('/dashboard/surattugas')}}"> <i class="menu-icon fa fa-paper-plane"></i>Surat Tugas</a>
                    
                 </li>
                

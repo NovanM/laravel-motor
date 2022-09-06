@@ -3,6 +3,10 @@
 @section('content')
 
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+
+
 <div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
@@ -57,12 +61,26 @@
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Keterangan</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="keterangan" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Keterangan Penambahan Sparepart</label></div>
+                               
+                                <div class="col-12 col-md-9">
+                                    <select id="sparepart_id" name="sparepart_id[]" class="mul-select form-control" multiple='multiple' >
+                                        @foreach($data_sparepart as $sparepart)
+                                        <option value={{$sparepart ->id}}>{{$sparepart -> nama}}</option>
+                                        @endforeach
+                                        <!-- <option value="1">Option #1</option>
+                                        <option value="2">Option #2</option>
+                                        <option value="3">Option #3</option> -->
+                                    </select>
+                                </div>
+
+                          
+                                
                             </div>
+                            
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Harga</label></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Harga Layanan</label></div>
                                 <div class="col-12 col-md-9"><input type="text" id="text-input" name="harga" placeholder="Text" class="form-control"    ><small class="form-text text-muted">This is a help text</small></div>
                             </div>
 
@@ -84,5 +102,21 @@
     </div>
 
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+
+            $(document).ready(function () {
+
+                $("#sparepart_id").select2({
+
+                    placeholder: "Silahkan Pilih"
+
+                });
+
+            });
+
+        </script>
 
     @endsection

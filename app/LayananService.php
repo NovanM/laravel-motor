@@ -8,7 +8,7 @@ class LayananService extends Model
 {
     //
     protected $fillable = [
-        'jenis_layanan', 'keterangan', 'harga',
+        'jenis_layanan', 'keterangan', 'harga','sparepart_id'
     ];
     
 }

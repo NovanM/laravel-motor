@@ -26,7 +26,7 @@
 
 
 <script src="{{asset('vendors/jquery-validation/dist/jquery.validate.min.js')}}"></script>
-<script src="{{asset('vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js')}}"></script>
+<script src="{{asset('vendors/jquery-validation-unobtrusive/src/jquery.validate.unobtrusive.js')}}"></script>
 
 
 <script>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\LayananService;
 use App\Sparepart;
 use App\StatusKerja;
+use App\SuratTugas;
 use Illuminate\Http\Request;
 
 class LayananServiceController extends Controller
@@ -134,6 +135,8 @@ class LayananServiceController extends Controller
         //
         $data = LayananService::find($id);
         $statusMekanik = StatusKerja::all()->where('layanan_id', $data->id);
+        $surttugas = SuratTugas::where('layanan_id',$data->id);
+        $surttugas->delete();
         foreach ($statusMekanik as $value) {
             $value->delete();
         }

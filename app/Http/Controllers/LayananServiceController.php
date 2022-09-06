@@ -122,7 +122,7 @@ class LayananServiceController extends Controller
             'harga' => 'required|numeric',
             'sparepart_id' => 'required',
         ]);
-        $harga_Sparepart = Sparepart::whereIn('id', request()->get('sparepart_id'))->sum('harga_jual');
+        $harga_Sparepart = Sparepart::whereIn('id', $request->get('sparepart_id'))->sum('harga_jual');
 
         $data = LayananService::find($id);
         $data->harga =$request->get('harga') + $harga_Sparepart;

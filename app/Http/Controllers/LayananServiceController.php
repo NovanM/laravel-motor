@@ -47,6 +47,7 @@ class LayananServiceController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());
         $request->validate([
             'jenis_layanan' => 'required',
             'harga' => 'required|numeric',
@@ -100,7 +101,8 @@ class LayananServiceController extends Controller
         //
         $pagename = 'Edit Data Layanan Service';
         $data = LayananService::find($id);
-        return view('admin.layanan.edit', compact('data', 'pagename',));
+        $data_sparepart = Sparepart::all();
+        return view('admin.layanan.edit', compact('data', 'pagename','data_sparepart'));
     }
 
     /**

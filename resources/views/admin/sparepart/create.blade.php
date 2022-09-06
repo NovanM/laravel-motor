@@ -73,25 +73,25 @@
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Kode</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="kode" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="kode"  class="form-control"> </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Sparepart</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="nama" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="nama"  class="form-control"> </div>
                             </div>
                           
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Harga</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="harga" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="harga"  class="form-control"> </div>
                             </div>
                           
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Harga Jual</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="harga_jual" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="harga_jual"  class="form-control"> </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Stok</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="stok" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="stok"  class="form-control"> </div>
                             </div>
                             
 

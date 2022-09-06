@@ -21,16 +21,16 @@ class TransaksiControlller extends Controller
     //
     public function all($pelanggan)
     {
-       
-   
+
+
         if ($pelanggan) {
-            $transaction = Transaksi::with(['pelanggan','user'])->where('pelanggan_id', $pelanggan)->orderBy('created_at','desc')->get();
-        }else if($pelanggan == 0){
-            $transaction = Transaksi::with(['pelanggan','user'])->whereIn('status',['SUCCESS','success'])->orderBy('created_at','desc')->get();
+            $transaction = Transaksi::with(['pelanggan', 'user'])->where('pelanggan_id', $pelanggan)->orderBy('created_at', 'desc')->get();
+        } else if ($pelanggan == 0) {
+            $transaction = Transaksi::with(['pelanggan', 'user'])->whereIn('status', ['SUCCESS', 'success'])->orderBy('created_at', 'desc')->get();
         }
 
         return ResponseFormatter::success(
-                $transaction,
+            $transaction,
             'Data transaksi'
         );
     }
@@ -63,14 +63,14 @@ class TransaksiControlller extends Controller
                 }
             }
             $stringarray = implode(', ', $keterangan);
-    
+
             $transaction = Transaksi::create([
                 'layanan_id' => $request->layanan_id,
                 'user_id' => $request->user()->id,
                 'nama_layanan' => $namaLayanan->jenis_layanan,
                 'total' => $request->total,
                 'status' => $request->status,
-                'pelanggan_id' =>0,
+                'pelanggan_id' => 0,
                 'payment_url' => '',
                 'layanan_sparepart' => $namaLayanan->keterangan,
                 'layanan_harga_sparepart' => $stringarray,
@@ -83,7 +83,7 @@ class TransaksiControlller extends Controller
                 'nama_layanan' => $namaLayanan->nama,
                 'total' => $request->total,
                 'status' => $request->status,
-                'pelanggan_id'=>0,
+                'pelanggan_id' => 0,
                 'payment_url' => '',
             ]);
         }
@@ -113,11 +113,11 @@ class TransaksiControlller extends Controller
             $paymentUrl = Snap::createTransaction($midtrans)->redirect_url;
             $idPelanggan = Pelanggan::where('user_id', $transaction->user_id)->first();
 
-            
+
             $transaction->payment_url = $paymentUrl;
             $transaction->pelanggan_id = $idPelanggan->id;
             $transaction->save();
-    
+
             return ResponseFormatter::success($transaction, 'Tranksaksi berhasil');
         } catch (Exception $e) {
             return ResponseFormatter::error($e->getMessage(), 'Transaksi Gagal');
@@ -148,22 +148,32 @@ class TransaksiControlller extends Controller
                     $transaction->status = 'PENDING';
                 } else {
                     $transaction->status = 'SUCCESS';
-                    if ($transaction->sparepart_id != 0  ) {
+                    if ($transaction->sparepart_id != 0) {
                         $sparepart = Sparepart::findOrFail($transaction->sparepart_id);
                         $dataStok = $sparepart->stok;
                         $dataStok = $dataStok - 1;
                         $sparepart->stok = $dataStok;
                         $sparepart->save();
                     }
-                    if ($transaction->layanan_id != 0 ) {
+                    if ($transaction->layanan_id != 0) {
                         $status_kerja = StatusKerja::create([
                             'transaksi_id' => $transaction->id,
                             'layanan_id' => $transaction->layanan_id,
                             //Check Mekanik User
                             'user_id' => $transaction->user->id,
                             'status_kerja' => 'Diterima'
-    
+
                         ]);
+                        $namaLayanan = LayananService::find($transaction->layanan_id);
+                        $dataIdSparepart = explode(',', $namaLayanan->sparepart_id);
+                        $allSparepart = Sparepart::whereIn('id', $dataIdSparepart);
+                        foreach ($allSparepart as $sparepart) {
+                            $dataStok = $sparepart->stok;
+                            $dataStok = $dataStok - 1;
+                            $sparepart->stok = $dataStok;
+                            $sparepart->save();
+                        }
+
                         $status_kerja->save();
                     }
                 }
@@ -186,6 +196,16 @@ class TransaksiControlller extends Controller
                     'status_kerja' => 'Diterima'
 
                 ]);
+                $namaLayanan = LayananService::find($transaction->layanan_id);
+                $dataIdSparepart = explode(',', $namaLayanan->sparepart_id);
+                $allSparepart = Sparepart::whereIn('id', $dataIdSparepart);
+                foreach ($allSparepart as $sparepart) {
+                    $dataStok = $sparepart->stok;
+                    $dataStok = $dataStok - 1;
+                    $sparepart->stok = $dataStok;
+                    $sparepart->save();
+                }
+
                 $status_kerja->save();
             }
         } else if ($status == 'pending') {

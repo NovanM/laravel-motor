@@ -54,20 +54,20 @@
              
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Mekanik</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->user->name}}" name="name" placeholder="Text" class="form-control " disabled><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->user->name}}" name="name"  class="form-control " disabled> </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email Address</label></div>
-                                <div class="col-12 col-md-9"><input type="text" value="{{$data->user->email}}" id="text-input" name="email" placeholder="Text" class="form-control " disabled><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" value="{{$data->user->email}}" id="text-input" name="email"  class="form-control " disabled> </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Komplain</label></div>
-                                <div class="col-12 col-md-9"><input type="text" value="{{$data->komplain}}" id="text-input" name="komplain" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" value="{{$data->komplain}}" id="text-input" name="komplain"  class="form-control"> </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Rating</label></div>
-                                <div class="col-12 col-md-9"><input type="number" value="{{$data->rating}}" id="text-input" name="rating" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="number" value="{{$data->rating}}" id="text-input" name="rating"  class="form-control"> </div>
                             </div>
 
                            

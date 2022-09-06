@@ -43,7 +43,7 @@
                     </div>
                     @endif
                     <div class="card-header">
-                        <!-- <a href="{{route('layanan.create')}}" class="btn btn-success pull-right">Create</a> -->
+                        <a href="{{route('surattugas.create')}}" class="btn btn-success pull-right">tambah</a>
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
 
@@ -52,12 +52,10 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>ID transaksi</th>
+                                    <th>Nama Pelanggan</th>
                                     <th>Nama Layanan</th>
-                                    <th>Nama </th>
-                                    <th>Email</th>
-                                    <th>Komentar</th>
-                                    <th>Rating</th>
+                                    <th>Nama sparepart</th>
+                                    <th>Harga total</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -65,60 +63,15 @@
                                 @foreach($allSurattugas as $i => $row)
                                 <tr>
                                     <td>{{++$i}}</td>
-                                    <td>00{{$row->transaksi_id}}</td>
-                                    <td>@empty($row->transaksi->layanan_id)
-                                        Pembelian {{$row->transaksi->nama_layanan}}
-                                        @else
-                                        Service {{$row->transaksi->nama_layanan}}
-                                        @endempty
-
-                                    </td>
-                                    <td>{{$row->user->name}}</td>
-                                    <td>{{$row->user->email}}</td>
-
-                                    <td>{{$row->komplain}}</td>
-
-                                    <td>
-                                        @if($row->rating == 1)
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        @elseif($row->rating == 2)
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        @elseif($row->rating == 3)
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        @elseif($row->rating == 4)
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        @elseif($row->rating == 5)
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        @endif
-                                    </td>
+                                    <td>{{$row ->nama_pelanggan}}</td>
+                                    <td>{{$row ->layanan->jenis_layanan}}</td>
+                                    <td>{{$row ->layanan->keterangan}}</td>
+                                    <td>{{$row ->layanan->harga}}</td>
                                     <td>
 
-                                        <form class="form-inline" action="{{route('rating.destroy', $row ->id)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-outline-danger" type="submit">Hapus</button>
-                                            <a href="{{route('rating.show', $row ->id)}}" class="btn btn-warning ml-3 text-bold">Detail</a>
-                                        </form>
+
+
+                                        <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal-{{$row->id}}" data-whatever="@mdo">Cetak Data</button>
 
 
                                     </td>
@@ -149,6 +102,82 @@
 <script src="{{asset('vendors/popper.js/dist/umd/popper.min.js')}}"></script>
 <script src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/js/main.js')}}"></script> -->
+@foreach($allSurattugas as $i => $row)
+<div class="modal fade" id="exampleModal-{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cetak Surat Tugas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="get" action="{{route('download-transaksi')}}">
+                    @csrf
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label ">Nama Pelanggan</label>
+                        <input type="text" name="nama_pelanggan" class="form-control " value="{{$row->nama_pelanggan}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label ">Nama Layanan</label>
+                        <input type="text" name="nama_layanan" class="form-control " value="{{$row->layanan->jenis_layanan}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label ">Rincian Sparepart</label>
+                        <input type="text" name="nama_layanan" class="form-control " value="{{$row->layanan->keterangan}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label ">Harga Total</label>
+                        <input type="text" name="nama_layanan" class="form-control " value="{{$row->layanan->harga}}">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" onclick="printDiv('print_area')" class="btn btn-submit  btn-primary">Cetak Data</button>
+                    </div>
+                    <div id="print_area" class="table-responsive" hidden>
+                    <h4 style="margin-top: 30px; text-align: center;" class="mb-5">Cetak Surat Tugas</h4>
+                    <table style="border: 1px solid black; border-collapse: collapse;" class="table table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th style="border: 1px solid black;">Nama Pelanggan</th>
+                                <th style="border: 1px solid black;">Nama Layanan</th>
+                                <th style="border: 1px solid black;">Rincian Sparepart</th>
+                                <th style="border: 1px solid black;">Harga Total</th>
+                      
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid black;">{{$row->nama_pelanggan}}</td>
+                                <td style="border: 1px solid black;">{{$row->layanan->jenis_layanan}}</td>
+                                <td style="border: 1px solid black;">{{$row->layanan->keterangan}}</td>
+                                <td style="border: 1px solid black;">{{$row->harga_total}}</td>      
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </form>
+
+              
+            </div>
+
+        </div>
+    </div>
+</div>
+@endforeach
 
 
-@endsection
+    <script>
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            window.location.href = document.URL
+        }
+    </script>
+    @endsection

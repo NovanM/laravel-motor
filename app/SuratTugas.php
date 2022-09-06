@@ -11,6 +11,6 @@ class SuratTugas extends Model
 
     public function layanan()
     {
-        return $this->hasOne(layanan::class ,'id','layanan_id');
+        return $this->hasOne(LayananService::class ,'id','layanan_id');
     }    
 }

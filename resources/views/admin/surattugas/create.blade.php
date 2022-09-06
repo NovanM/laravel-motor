@@ -48,44 +48,33 @@
                         </div>
 
                         @endif
-                        <form action="{{route('users.store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="{{route('surattugas.store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                             @csrf
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="txtname_user"  class="form-control"> </div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Pelanggan</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="nama_pelanggan"  class="form-control"> </div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email Address</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="txtemail_user"  class="form-control"> </div>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Password</label></div>
-                                <div class="col-12 col-md-9"><input type="password" id="text-input" name="txtpassword_user"  class="form-control"> </div>
-                            </div>
-
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Confirm Password</label></div>
-                                <div class="col-12 col-md-9"><input type="password" id="text-input" name="txtConfirmPassword_user"  class="form-control"> </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="select" class=" form-control-label">Select</label></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama Layanan</label></div>
                                 <div class="col-12 col-md-9">
-                                    <select name="role_user" id="select" class="form-control">
-                                        @foreach($allRoles as $row)
-                                        <option value={{$row ->id}}>{{$row -> name}}</option>
+                                    <select class="form-control" name="nama_layanan" id="">
+                                        <option value="" label="Pilih Layanan"></option>
+                                        @foreach($dataLayanan as $layanan)
+                                        
+                                            <option value="
+                                            {{$layanan->id}}">
+                                            {{$layanan->jenis_layanan}}
+                                        </option>
+                                        
                                         @endforeach
-                                        <!-- <option value="1">Option #1</option>
-                                        <option value="2">Option #2</option>
-                                        <option value="3">Option #3</option> -->
-                                    </select>
+                                    </select>    
                                 </div>
                             </div>
-                            
+
+
 
                            
-
                             <button type="submit" class="btn btn-primary btn-sm mr-2">
                                 <i class="fa fa-dot-circle-o"></i> Save
                             </button>
@@ -101,5 +90,7 @@
 
         </div>
     </div>
+
+    
 
     @endsection

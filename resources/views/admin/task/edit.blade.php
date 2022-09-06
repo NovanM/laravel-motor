@@ -61,7 +61,7 @@
                             @csrf
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name Task</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="txtname_task" value="{{$data->name_task}}" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="txtname_task" value="{{$data->name_task}}"  class="form-control"> </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="select" class=" form-control-label">Select</label></div>
@@ -81,7 +81,7 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Description Task</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="txtdescription_task" value="{{$data ->desc_task}}" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="txtdescription_task" value="{{$data ->desc_task}}"  class="form-control"> </div>
                             </div>
 
                             <div class="row form-group">

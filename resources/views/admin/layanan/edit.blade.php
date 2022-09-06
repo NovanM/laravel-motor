@@ -55,17 +55,17 @@
              
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Jenis Layanan</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->jenis_layanan}}" name="jenis_layanan" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->jenis_layanan}}" name="jenis_layanan"  class="form-control"> </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Keterangan</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->keterangan}}" name="keterangan" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->keterangan}}" name="keterangan"  class="form-control"> </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Harga</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->harga}}" name="harga" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="{{$data->harga}}" name="harga"  class="form-control"> </div>
                             </div>
 
                            

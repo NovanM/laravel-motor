@@ -54,22 +54,22 @@
              
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
-                                <div class="col-12 col-md-9"><input type="text" value ="{{$user->name}}" id="text-input" name="txtname_user" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" value ="{{$user->name}}" id="text-input" name="txtname_user"  class="form-control"> </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email Address</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" value ="{{$user -> email}}" name="txtemail_user" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" value ="{{$user -> email}}" name="txtemail_user"  class="form-control"> </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Password</label></div>
-                                <div class="col-12 col-md-9"><input type="password" id="text-input" name="txtpassword_user" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="password" id="text-input" name="txtpassword_user"  class="form-control"> </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Confirm Password</label></div>
-                                <div class="col-12 col-md-9"><input type="password" id="text-input" name="txtConfirmPassword_user" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                <div class="col-12 col-md-9"><input type="password" id="text-input" name="txtConfirmPassword_user"  class="form-control"> </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="select" class=" form-control-label">Select</label></div>

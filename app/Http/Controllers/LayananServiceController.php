@@ -47,13 +47,13 @@ class LayananServiceController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->all());
+       
         $request->validate([
             'jenis_layanan' => 'required',
             'harga' => 'required|numeric',
             'sparepart_id' => 'required',
         ]);
-        $harga_Sparepart = Sparepart::whereIn('id', request()->get('sparepart_id'))->sum('harga');
+        $harga_Sparepart = Sparepart::whereIn('id', request()->get('sparepart_id'))->sum('harga_jual');
 
         $data = new LayananService(
             [
@@ -115,13 +115,30 @@ class LayananServiceController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        
+        $request->validate([
+            'jenis_layanan' => 'required',
+            'harga' => 'required|numeric',
+            'sparepart_id' => 'required',
+        ]);
+        $harga_Sparepart = Sparepart::whereIn('id', request()->get('sparepart_id'))->sum('harga_jual');
+
         $data = LayananService::find($id);
-
-        $data->jenis_layanan = $request->get('jenis_layanan');
-        $data->keterangan = $request->get('keterangan');
-        $data->harga = $request->get('harga');
-
-
+        $data->harga =$request->get('harga') + $harga_Sparepart;
+        $data->sparepart_id = implode(",", $request->get('sparepart_id'));
+        $allSparepart = Sparepart::all();
+        $keterangan = [];
+        foreach ($allSparepart as $value) {
+            foreach (explode(",", $data->sparepart_id) as $key) {
+                if ($value->id == $key) {
+                    array_push($keterangan, $value->nama);
+                }
+            }
+        }
+        $stringarray = implode(', ', $keterangan);
+        $data->keterangan = $stringarray;
+        $data->jenis_layanan = $request->get('jenis_layanan');        
         $data->save();
         return redirect('dashboard/layanan')->with('success', 'Layanan Service Diperbaruhi');
     }

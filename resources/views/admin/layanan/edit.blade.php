@@ -71,7 +71,7 @@
                                             @foreach($data_sparepart as $sparepart)
                                             <option
                                                
-                                            value="{{$sparepart ->id}}" 
+                                            value="{{$sparepart->id}}" 
                                                 @if(in_array($sparepart->id,explode(',',$data->sparepart_id)))
                                                     selected
                                                 @endif

@@ -48,7 +48,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Jenis Layanan</th>
-                                    <th>Keterangan Include Sparepart</th>
+                                    <th>Keterangan Sparepart</th>
                                     <th>Harga Total</th>
                                     <th>Aksi</th>
                                    

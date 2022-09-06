@@ -40,7 +40,7 @@
                         <a href="{{route('sparepart.create')}}" class="btn btn-success pull-right">Tambah</a>
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
-                   
+       
                     <div class="card-body">
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>

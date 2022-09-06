@@ -166,7 +166,7 @@ class TransaksiControlller extends Controller
                         ]);
                         $namaLayanan = LayananService::find($transaction->layanan_id);
                         $dataIdSparepart = explode(',', $namaLayanan->sparepart_id);
-                        $allSparepart = Sparepart::whereIn('id', $dataIdSparepart);
+                        $allSparepart = Sparepart::whereIn('id', $dataIdSparepart)->get();
                         foreach ($allSparepart as $sparepart) {
                             $dataStok = $sparepart->stok;
                             $dataStok = $dataStok - 1;
@@ -198,7 +198,7 @@ class TransaksiControlller extends Controller
                 ]);
                 $namaLayanan = LayananService::find($transaction->layanan_id);
                 $dataIdSparepart = explode(',', $namaLayanan->sparepart_id);
-                $allSparepart = Sparepart::whereIn('id', $dataIdSparepart);
+                $allSparepart = Sparepart::whereIn('id', $dataIdSparepart)->get();
                 foreach ($allSparepart as $sparepart) {
                     $dataStok = $sparepart->stok;
                     $dataStok = $dataStok - 1;

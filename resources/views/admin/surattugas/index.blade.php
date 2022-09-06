@@ -9,6 +9,8 @@
     .checked {
         color: orange;
     }
+
+    tfoot, td { border: none; }
 </style>
 <div class="breadcrumbs">
     <div class="col-sm-4">
@@ -113,7 +115,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="get" action="{{route('download-transaksi')}}">
+                <form method="get" action="">
                     @csrf
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label ">Nama Pelanggan</label>
@@ -133,33 +135,62 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" onclick="printDiv('print_area')" class="btn btn-submit  btn-primary">Cetak Data</button>
+                        <button type="submit" onclick="printDiv('print_area-{{$row->id}}')" class="btn btn-submit  btn-primary">Cetak Data</button>
                     </div>
-                    <div id="print_area" class="table-responsive" hidden>
-                    <h4 style="margin-top: 30px; text-align: center;" class="mb-5">Cetak Surat Tugas</h4>
-                    <table style="border: 1px solid black; border-collapse: collapse;" class="table table-bordered" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th style="border: 1px solid black;">Nama Pelanggan</th>
-                                <th style="border: 1px solid black;">Nama Layanan</th>
-                                <th style="border: 1px solid black;">Rincian Sparepart</th>
-                                <th style="border: 1px solid black;">Harga Total</th>
-                      
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="border: 1px solid black;">{{$row->nama_pelanggan}}</td>
-                                <td style="border: 1px solid black;">{{$row->layanan->jenis_layanan}}</td>
-                                <td style="border: 1px solid black;">{{$row->layanan->keterangan}}</td>
-                                <td style="border: 1px solid black;">{{$row->harga_total}}</td>      
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <div id="print_area-{{$row->id}}" class="table-responsive" hidden>
+                        <h4 style="margin-top: 30px; text-align: center;" class="mb-5">Cetak Surat Tugas</h4>
+
+                        <table style="border: 1px solid black; border-collapse: collapse;" class="table table-bordered" width="100%" cellspacing="0">
+                            <img src="{{asset('images/logo_motor.png')}}" class="py-3" width="100" alt="Logo">
+                            <thead>
+                                <tr>
+                                    <th style="border: 1px solid black;">Nama Pelanggan</th>
+                                    <th style="border: 1px solid black;">Nama Layanan</th>
+                                    <th style="border: 1px solid black;">Rincian Sparepart</th>
+                                    <th style="border: 1px solid black;">Harga Total</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td style="border: 1px solid black;">{{$row->nama_pelanggan}}</td>
+                                    <td style="border: 1px solid black;">{{$row->layanan->jenis_layanan}}</td>
+                                    <td style="border: 1px solid black;">{{$row->layanan->keterangan}}</td>
+                                    <td style="border: 1px solid black;">{{$row->harga_total}}</td>
+                                </tr>
+
+                            </tbody>
+                            <tfoot  class="py-5">
+                            <td >
+                            <div class="row">
+                                <div class="col-auto">
+                                    <h4> Pelanggan</h4>
+                                    <br>
+                                    <br>
+                                    <hr>
+                                    
+                                </div>
+                               
+                            </div>
+                            </td>
+                            <td >
+                            <div class="col-auto">
+                                    <h4> Mekanik</h4>
+                                    <br>
+                                    <br>
+                                    <hr>
+                                    
+                                </div>
+                            </td>
+                            </tfoot>
+                        </table>
+
+
+                    </div>
                 </form>
 
-              
+
             </div>
 
         </div>
@@ -168,16 +199,16 @@
 @endforeach
 
 
-    <script>
-        function printDiv(divName) {
-            var printContents = document.getElementById(divName).innerHTML;
-            var originalContents = document.body.innerHTML;
+<script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
 
-            document.body.innerHTML = printContents;
+        document.body.innerHTML = printContents;
 
-            window.print();
+        window.print();
 
-            window.location.href = document.URL
-        }
-    </script>
-    @endsection
+        window.location.href = document.URL
+    }
+</script>
+@endsection

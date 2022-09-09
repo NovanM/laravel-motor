@@ -68,7 +68,7 @@
                                     <td>{{$row ->nama_pelanggan}}</td>
                                     <td>{{$row ->layanan->jenis_layanan}}</td>
                                     <td>{{$row ->layanan->keterangan}}</td>
-                                    <td>{{$row ->layanan->harga}}</td>
+                                    <td>@currency($row->layanan->harga)</td>
                                     <td>
 
 
@@ -157,7 +157,7 @@
                                     <td style="border: 1px solid black;">{{$row->nama_pelanggan}}</td>
                                     <td style="border: 1px solid black;">{{$row->layanan->jenis_layanan}}</td>
                                     <td style="border: 1px solid black;">{{$row->layanan->keterangan}}</td>
-                                    <td style="border: 1px solid black;">{{$row->harga_total}}</td>
+                                    <td style="border: 1px solid black;"> @currency($row->harga_total)</td>
                                 </tr>
 
                             </tbody>

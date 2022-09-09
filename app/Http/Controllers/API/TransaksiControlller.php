@@ -58,7 +58,7 @@ class TransaksiControlller extends Controller
             foreach ($allSparepart as $value) {
                 foreach (explode(",", $namaLayanan->sparepart_id) as $key) {
                     if ($value->id == $key) {
-                        array_push($keterangan, $value->harga);
+                        array_push($keterangan, $value->harga_jual);
                     }
                 }
             }

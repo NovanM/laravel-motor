@@ -119,19 +119,19 @@
                     @csrf
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label ">Nama Pelanggan</label>
-                        <input type="text" name="nama_pelanggan" class="form-control " value="{{$row->nama_pelanggan}}">
+                        <input type="text" name="nama_pelanggan" class="form-control " value="{{$row->nama_pelanggan}}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label ">Nama Layanan</label>
-                        <input type="text" name="nama_layanan" class="form-control " value="{{$row->layanan->jenis_layanan}}">
+                        <input type="text" name="nama_layanan" class="form-control " value="{{$row->layanan->jenis_layanan}}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label ">Rincian Sparepart</label>
-                        <input type="text" name="nama_layanan" class="form-control " value="{{$row->layanan->keterangan}}">
+                        <input type="text" name="nama_layanan" class="form-control " value="{{$row->layanan->keterangan}}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label ">Harga Total</label>
-                        <input type="text" name="nama_layanan" class="form-control " value="{{$row->layanan->harga}}">
+                        <input type="text" name="nama_layanan" class="form-control " value="{{$row->layanan->harga}}" disabled>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

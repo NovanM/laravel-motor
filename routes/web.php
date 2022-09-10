@@ -35,6 +35,7 @@ Route::prefix('dashboard')
         Route::resource('layanan', 'LayananServiceController');
         Route::resource('rating', 'RatingController');
         Route::resource('status', 'StatusKerjaController');
+        Route::post('surattugas-update/{id}', 'SuratTugasController@updateMekanik')->name('update-nama-mekanik');
         Route::resource('surattugas', 'SuratTugasController');
         Route::get('transaksi', 'TransaksiController@index');
         Route::get('transaksi/pesanan', 'TransaksiController@periodic')->name('periode');

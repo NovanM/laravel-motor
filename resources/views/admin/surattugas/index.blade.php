@@ -5,13 +5,7 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    .checked {
-        color: orange;
-    }
 
-    tfoot, td { border: none; }
-</style>
 <div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
@@ -45,7 +39,7 @@
                     </div>
                     @endif
                     <div class="card-header">
-                        <a href="{{route('surattugas.create')}}" class="btn btn-success pull-right">tambah</a>
+                        <!-- <a href="{{route('surattugas.create')}}" class="btn btn-success pull-right">tambah</a> -->
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
 
@@ -55,6 +49,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Pelanggan</th>
+                                    <th>Nama Mekanik</th>
                                     <th>Nama Layanan</th>
                                     <th>Nama sparepart</th>
                                     <th>Harga total</th>
@@ -66,6 +61,11 @@
                                 <tr>
                                     <td>{{++$i}}</td>
                                     <td>{{$row ->nama_pelanggan}}</td>
+                                    @empty($row->nama_mekanik)
+                                    <td>Mekanik Belum Dipilih</td>
+                                    @else
+                                    <td>{{$row ->nama_mekanik}}</td>
+                                    @endempty
                                     <td>{{$row ->layanan->jenis_layanan}}</td>
                                     <td>{{$row ->layanan->keterangan}}</td>
                                     <td>@currency($row->layanan->harga)</td>
@@ -73,7 +73,7 @@
 
 
 
-                                        <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal-{{$row->id}}" data-whatever="@mdo">Cetak Data</button>
+                                        <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal-{{$row->id}}" data-whatever="@mdo">Pilih Mekanik</button>
 
 
                                     </td>
@@ -109,17 +109,33 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cetak Surat Tugas</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Surat Tugas</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="get" action="">
+                <form action="{{route('update-nama-mekanik', $row->id)}}" enctype="multipart/form-data" method="POST">
+                    
                     @csrf
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label ">Nama Pelanggan</label>
                         <input type="text" name="nama_pelanggan" class="form-control " value="{{$row->nama_pelanggan}}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label ">Nama Mekanik</label>
+
+                        <select class="form-control" name="nama_mekanik" id="">
+                            <option value="" label="Pilih Mekanik"></option>
+                            @foreach($dataMekanik as $mekanik)
+
+                            <option value="
+                                            {{$mekanik->name}}">
+                                {{$mekanik->name}}
+                            </option>
+
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label ">Nama Layanan</label>
@@ -135,59 +151,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" onclick="printDiv('print_area-{{$row->id}}')" class="btn btn-submit  btn-primary">Cetak Data</button>
+                        <button type="submit" class="btn btn-submit  btn-primary">Submit</button>
                     </div>
-                    <div id="print_area-{{$row->id}}" class="table-responsive" hidden>
-                        <h4 style="margin-top: 30px; text-align: center;" class="mb-5">Cetak Surat Tugas</h4>
 
-                        <table style="border: 1px solid black; border-collapse: collapse;" class="table table-bordered" width="100%" cellspacing="0">
-                            <img src="{{asset('images/logo_motor.png')}}" class="py-3" width="100" alt="Logo">
-                            <thead>
-                                <tr>
-                                    <th style="border: 1px solid black;">Nama Pelanggan</th>
-                                    <th style="border: 1px solid black;">Nama Layanan</th>
-                                    <th style="border: 1px solid black;">Rincian Sparepart</th>
-                                    <th style="border: 1px solid black;">Harga Total</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <tr>
-                                    <td style="border: 1px solid black;">{{$row->nama_pelanggan}}</td>
-                                    <td style="border: 1px solid black;">{{$row->layanan->jenis_layanan}}</td>
-                                    <td style="border: 1px solid black;">{{$row->layanan->keterangan}}</td>
-                                    <td style="border: 1px solid black;"> @currency($row->harga_total)</td>
-                                </tr>
-
-                            </tbody>
-                            <tfoot  class="py-5">
-                            <td >
-                            <div class="row">
-                                <div class="col-auto">
-                                    <h4> Pelanggan</h4>
-                                    <br>
-                                    <br>
-                                    <hr>
-                                    
-                                </div>
-                               
-                            </div>
-                            </td>
-                            <td >
-                            <div class="col-auto">
-                                    <h4> Mekanik</h4>
-                                    <br>
-                                    <br>
-                                    <hr>
-                                    
-                                </div>
-                            </td>
-                            </tfoot>
-                        </table>
-
-
-                    </div>
                 </form>
 
 
@@ -199,16 +165,4 @@
 @endforeach
 
 
-<script>
-    function printDiv(divName) {
-        var printContents = document.getElementById(divName).innerHTML;
-        var originalContents = document.body.innerHTML;
-
-        document.body.innerHTML = printContents;
-
-        window.print();
-
-        window.location.href = document.URL
-    }
-</script>
 @endsection

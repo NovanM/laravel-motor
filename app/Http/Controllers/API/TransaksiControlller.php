@@ -8,6 +8,7 @@ use App\LayananService;
 use App\Pelanggan;
 use App\Sparepart;
 use App\StatusKerja;
+use App\SuratTugas;
 use App\Transaksi;
 use Exception;
 use Illuminate\Http\Request;
@@ -164,6 +165,12 @@ class TransaksiControlller extends Controller
                             'status_kerja' => 'Diterima'
 
                         ]);
+                        $surattugas = SuratTugas::create([
+                            'nama_pelanggan' => $transaction->user->name,
+                            'layanan_id' => $transaction->layanan_id,
+                            'harga_total' => $transaction->layanan->harga,
+                        ]);
+                        $surattugas->save();
                         $namaLayanan = LayananService::find($transaction->layanan_id);
                         $dataIdSparepart = explode(',', $namaLayanan->sparepart_id);
                         $allSparepart = Sparepart::whereIn('id', $dataIdSparepart)->get();
@@ -196,6 +203,12 @@ class TransaksiControlller extends Controller
                     'status_kerja' => 'Diterima'
 
                 ]);
+                $surattugas = SuratTugas::create([
+                    'nama_pelanggan' => $transaction->user->name,
+                    'layanan_id' => $transaction->layanan_id,
+                    'harga_total' => $transaction->layanan->harga,
+                ]);
+                $surattugas->save();
                 $namaLayanan = LayananService::find($transaction->layanan_id);
                 $dataIdSparepart = explode(',', $namaLayanan->sparepart_id);
                 $allSparepart = Sparepart::whereIn('id', $dataIdSparepart)->get();

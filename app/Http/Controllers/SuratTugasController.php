@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\LayananService;
 use App\SuratTugas;
+use App\User;
 use Illuminate\Http\Request;
 
 class SuratTugasController extends Controller
@@ -18,7 +19,8 @@ class SuratTugasController extends Controller
         //
         $pagename = 'Data Form Surat tugas';
         $allSurattugas = SuratTugas::all();
-        return view('admin.surattugas.index', compact('pagename','allSurattugas'));
+        $dataMekanik = User::where('role','mekanik')->get();
+        return view('admin.surattugas.index', compact('pagename','allSurattugas','dataMekanik'));
     }
 
     /**
@@ -80,6 +82,8 @@ class SuratTugasController extends Controller
     public function edit($id)
     {
         //
+        
+
     }
 
     /**
@@ -92,6 +96,10 @@ class SuratTugasController extends Controller
     public function update(Request $request, $id)
     {
         //
+        dd($request->all());
+        $surattugas = SuratTugas::find($id);
+        $surattugas->update(['nama_mekanik' => $request->get('nama_mekanik')]);
+        return redirect('dashboard/surattugas')->with('success', 'Mekanik Dipilih');
     }
 
     /**
@@ -103,5 +111,13 @@ class SuratTugasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function updateMekanik(Request $request, $id){
+
+        $surattugas = SuratTugas::find($id);
+        $surattugas->update(['nama_mekanik' => $request->get('nama_mekanik')]);
+        return redirect('dashboard/surattugas')->with('success', 'Mekanik Dipilih');
     }
 }

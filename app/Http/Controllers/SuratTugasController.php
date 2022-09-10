@@ -18,7 +18,7 @@ class SuratTugasController extends Controller
     {
         //
         $pagename = 'Data Form Surat tugas';
-        $allSurattugas = SuratTugas::all();
+        $allSurattugas = SuratTugas::orderBy('created_at', 'DESC')->get();
         $dataMekanik = User::where('role','mekanik')->get();
         return view('admin.surattugas.index', compact('pagename','allSurattugas','dataMekanik'));
     }

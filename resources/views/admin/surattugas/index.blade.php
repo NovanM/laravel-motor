@@ -53,6 +53,7 @@
                                     <th>Nama Layanan</th>
                                     <th>Nama sparepart</th>
                                     <th>Harga total</th>
+                                    <th>Waktu Transaksi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -69,6 +70,7 @@
                                     <td>{{$row ->layanan->jenis_layanan}}</td>
                                     <td>{{$row ->layanan->keterangan}}</td>
                                     <td>@currency($row->layanan->harga)</td>
+                                    <td>{{date('d F Y',strtotime($row->created_at))}}</td>
                                     <td>
 
 

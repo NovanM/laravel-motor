@@ -41,6 +41,18 @@
                         <!-- <a href="{{route('layanan.create')}}" class="btn btn-success pull-right">Create</a> -->
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
+                    <div class="col-auto ">
+                        <a href="{{url('/dashboard/status')}}"><button class="btn-warning btn " id="">Semua Status </button></a>
+                    </div>
+                    <div class="col-auto ">
+                        <a href="{{route('status-diterima')}}"><button class="btn-warning btn " id="">Laporan Diterima</button></a>
+                    </div>
+                    <div class="col-auto ">
+                        <a href="{{route('status-proses')}}"><button class="btn-warning btn " id=""> Laporan Diproses</button></a>
+                    </div>
+                    <div class="col-auto ">
+                        <a href="{{route('status-selesai')}}"><button class="btn-warning btn " id=""> Laporan Selesai</button></a>
+                    </div>
 
                     <div class="card-body">
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -57,7 +69,7 @@
                             </thead>
                             <tbody>
                                 @foreach($allMekanikStatus as $i => $row)
-                              
+
                                 <tr>
                                     <td>{{++$i}}</td>
                                     <td>{{$row->transaksi->nama_layanan}}</td>
@@ -65,7 +77,7 @@
                                     <td>{{date('d F Y h:m',strtotime($row->created_at))}}</td>
                                     <td>{{$row->user->name}}</td>
                                     <td> @if($row->status_kerja == 'Diterima')
-                                     <label class="badge badge-secondary">{{$row->status_kerja}}</label>
+                                        <label class="badge badge-secondary">{{$row->status_kerja}}</label>
                                         @elseif($row->status_kerja == 'Proses')
                                         <label class="badge badge-danger">{{$row->status_kerja}}</label>
                                         @else
@@ -73,7 +85,7 @@
                                         @endif
 
                                     </td>
-                                    
+
 
                                 </tr>
                                 @endforeach
@@ -88,7 +100,7 @@
                             </tbody>
 
                         </table>
-                       
+
                     </div>
                 </div>
             </div>

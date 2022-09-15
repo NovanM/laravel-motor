@@ -87,4 +87,25 @@ class StatusKerjaController extends Controller
     {
         //
     }
+
+    public function byProses(){
+        $pagename = 'Data Status Kerja Mekanik';
+        $allMekanikStatus = StatusKerja::where('status_kerja','Proses')->orderBy('created_at','desc')->get();
+        
+
+        return view('admin.status.index', compact('pagename', 'allMekanikStatus' ));
+    }
+
+    public function byDiterima(){
+        $pagename = 'Data Status Kerja Mekanik';
+        $allMekanikStatus = StatusKerja::where('status_kerja','Diterima')->orderBy('created_at','desc')->get();
+    
+        return view('admin.status.index', compact('pagename', 'allMekanikStatus' ));
+    }
+    public function bySelesai(){
+        $pagename = 'Data Status Kerja Mekanik';
+        $allMekanikStatus = StatusKerja::where('status_kerja','Selesai')->orderBy('created_at','desc')->get();
+
+        return view('admin.status.index', compact('pagename', 'allMekanikStatus','total', ));
+    }
 }

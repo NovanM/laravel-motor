@@ -34,6 +34,10 @@ Route::prefix('dashboard')
         Route::resource('sparepart', 'SparepartController');
         Route::resource('layanan', 'LayananServiceController');
         Route::resource('rating', 'RatingController');
+        Route::get('status/diterima', 'StatusKerjaController@byDiterima')->name('status-diterima');
+        Route::get('status/proses', 'StatusKerjaController@byProses')->name('status-proses');
+        Route::get('status/selesai', 'StatusKerjaController@bySelesai')->name('status-selesai');
+
         Route::resource('status', 'StatusKerjaController');
         Route::post('surattugas-update/{id}', 'SuratTugasController@updateMekanik')->name('update-nama-mekanik');
         Route::resource('surattugas', 'SuratTugasController');

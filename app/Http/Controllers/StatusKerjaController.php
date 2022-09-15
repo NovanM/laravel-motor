@@ -106,6 +106,6 @@ class StatusKerjaController extends Controller
         $pagename = 'Data Status Kerja Mekanik';
         $allMekanikStatus = StatusKerja::where('status_kerja','Selesai')->orderBy('created_at','desc')->get();
 
-        return view('admin.status.index', compact('pagename', 'allMekanikStatus','total', ));
+        return view('admin.status.index', compact('pagename', 'allMekanikStatus', ));
     }
 }

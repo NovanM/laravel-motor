@@ -41,20 +41,21 @@
                         <!-- <a href="{{route('layanan.create')}}" class="btn btn-success pull-right">Create</a> -->
                         <strong class="card-title">{{$pagename}}</strong>
                     </div>
-                    <div class="col-auto ">
-                        <a href="{{url('/dashboard/status')}}"><button class="btn-warning btn " id="">Semua Status </button></a>
-                    </div>
-                    <div class="col-auto ">
-                        <a href="{{route('status-diterima')}}"><button class="btn-warning btn " id="">Laporan Diterima</button></a>
-                    </div>
-                    <div class="col-auto ">
-                        <a href="{{route('status-proses')}}"><button class="btn-warning btn " id=""> Laporan Diproses</button></a>
-                    </div>
-                    <div class="col-auto ">
-                        <a href="{{route('status-selesai')}}"><button class="btn-warning btn " id=""> Laporan Selesai</button></a>
-                    </div>
 
                     <div class="card-body">
+                        <div class="col-auto ">
+                            <a href="{{url('/dashboard/status')}}"><button class="btn-warning btn " id="">Semua Status </button></a>
+                        </div>
+                        <div class="col-auto ">
+                            <a href="{{route('status-diterima')}}"><button class="btn-warning btn " id="">Laporan Diterima</button></a>
+                        </div>
+                        <div class="col-auto ">
+                            <a href="{{route('status-proses')}}"><button class="btn-warning btn " id=""> Laporan Diproses</button></a>
+                        </div>
+                        <div class="col-auto ">
+                            <a href="{{route('status-selesai')}}"><button class="btn-warning btn " id=""> Laporan Selesai</button></a>
+                        </div>
+
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
